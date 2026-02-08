@@ -8,7 +8,24 @@
 </head>
 <body>
     <header>
-       <a href="index.html"><img src="readee-logo.png" alt="READEE logo" width="538"></a>
+       <div class="header-container">
+           <a href="index.html" class="logo-link">
+               <img src="readee-logo.png" alt="READEE logo" class="header-logo">
+           </a>
+           <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">
+               <span class="menu-text">Discover Readee</span>
+               <span class="hamburger-icon">
+                   <span></span>
+                   <span></span>
+                   <span></span>
+               </span>
+           </button>
+       </div>
+       <nav id="navMenu" class="nav-menu">
+           <a href="#why-readee">Why Readee?</a>
+           <a href="#how-it-works">How Readee works</a>
+           <a href="#get-started">How to get started</a>
+       </nav>
     </header>
     <div id="hero">
         <h1>About READEE</h1>
@@ -16,6 +33,7 @@
     </div>
   <section id="about">
     <div class="container">
+      <h2 id="why-readee">Why Readee?</h2>
       <div class="row">
         <div class="card about-card">
           <div class="card-icon">📚</div>
@@ -42,13 +60,13 @@
         </div>
       </div>
       <div class="button-container">
-        <a href="questionnaire.html" class="get-started-button">Get Started</a>
+        <a href="questionnaire.html" class="get-started-button" id="get-started">Get Started</a>
       </div>
     </div>
   </section>
   <section id="readee-process">
     <div class="container">
-      <h2>How READEE Builds Reading Comprehension</h2>
+      <h2 id="how-it-works">How READEE Builds Reading Comprehension</h2>
 
       <div class="row">
     <div class="card process-card">
@@ -80,5 +98,6 @@
   </div>
   </div>
 </section>
+<script src="app.js"></script>
 </body>
 </html>

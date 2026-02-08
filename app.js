@@ -1,20 +1,30 @@
-// ===== MOBILE MENU TOGGLE =====
-const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+// ===== MENU TOGGLE =====
+const menuToggle = document.getElementById('menuToggle');
 const navMenu = document.getElementById('navMenu');
 
-if (mobileMenuToggle) {
-    mobileMenuToggle.addEventListener('click', () => {
+if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
-}
-
-// Close mobile menu when clicking on a link
-const navLinks = document.querySelectorAll('.nav-menu a');
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
+    
+    // Close menu when clicking on a link
+    const menuNavLinks = navMenu.querySelectorAll('a');
+    menuNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
     });
-});
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+    });
+}
 
 // ===== SMOOTH SCROLLING =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -23,7 +33,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const target = document.querySelector(this.getAttribute('href'));
         
         if (target) {
-            const navbarHeight = document.querySelector('.navbar').offsetHeight;
+            const navbar = document.querySelector('.navbar') || document.querySelector('header');
+            const navbarHeight = navbar ? navbar.offsetHeight : 0;
             const targetPosition = target.offsetTop - navbarHeight;
             
             window.scrollTo({

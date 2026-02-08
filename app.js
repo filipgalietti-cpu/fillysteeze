@@ -215,20 +215,29 @@ const schoolList = document.getElementById('school-list');
 
 if (schoolList) {
     fetch('pa_public_prek_counts_locations_by_zip.csv')
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load school data');
+            }
+            return response.text();
+        })
         .then(data => {
             const lines = data.split('\n');
             const schools = new Set();
             
-            // Skip header row and extract location names (5th column)
+            // CSV Structure: Program,county,lead_agency,partner_name,location_name,street_address,city,zip_code
+            // We're extracting the location_name field (index 4)
+            
+            // Skip header row and extract location names (5th column, index 4)
             for (let i = 1; i < lines.length; i++) {
                 const line = lines[i].trim();
                 if (line) {
-                    // Simple CSV parsing - split by comma
-                    const columns = line.split(',');
+                    // Parse CSV with basic quoted field handling
+                    const columns = parseCSVLine(line);
                     if (columns.length >= 5) {
                         const schoolName = columns[4].trim();
-                        if (schoolName) {
+                        // Filter out empty values and quoted remnants
+                        if (schoolName && schoolName !== '""') {
                             schools.add(schoolName);
                         }
                     }
@@ -242,10 +251,40 @@ if (schoolList) {
                 option.value = school;
                 schoolList.appendChild(option);
             });
+            
+            console.log(`Loaded ${schools.size} schools from CSV`);
         })
         .catch(error => {
             console.error('Error loading school names:', error);
+            // Provide fallback message to user
+            const schoolInput = document.getElementById('school');
+            if (schoolInput) {
+                schoolInput.placeholder = 'Type your school name (autocomplete unavailable)';
+            }
         });
+}
+
+// Simple CSV parser that handles quoted fields
+function parseCSVLine(line) {
+    const result = [];
+    let current = '';
+    let inQuotes = false;
+    
+    for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        
+        if (char === '"') {
+            inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+            result.push(current);
+            current = '';
+        } else {
+            current += char;
+        }
+    }
+    
+    result.push(current);
+    return result;
 }
 
 // ===== INITIALIZE =====

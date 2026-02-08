@@ -374,6 +374,11 @@ section h2 {
   margin-bottom: 8px;
 }
 
+.button-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
 /* Questionnaire Page Styles */
 #questionnaire-hero {
   background: var(--primary-gradient);

@@ -71,12 +71,117 @@ header {
 .logo-link {
   display: inline-block;
   text-decoration: none;
+  position: relative;
 }
 
 .header-logo {
   height: 90px;
   width: auto;
   display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Sparkle container */
+.logo-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Logo hover effects */
+.logo-link:hover .header-logo {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6)) 
+          drop-shadow(0 0 25px rgba(255, 255, 255, 0.4))
+          brightness(1.1);
+  animation: logo-glow 1.5s ease-in-out infinite;
+}
+
+.logo-link:hover::before {
+  opacity: 1;
+  animation: sparkle-rotate 3s linear infinite;
+  background: 
+    radial-gradient(circle at 20% 30%, transparent 0%, transparent 40%, rgba(255, 215, 0, 0.8) 40%, rgba(255, 215, 0, 0.8) 42%, transparent 42%),
+    radial-gradient(circle at 80% 20%, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.9) 40%, rgba(255, 255, 255, 0.9) 43%, transparent 43%),
+    radial-gradient(circle at 70% 80%, transparent 0%, transparent 40%, rgba(255, 215, 0, 0.7) 40%, rgba(255, 215, 0, 0.7) 42%, transparent 42%),
+    radial-gradient(circle at 30% 70%, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.8) 40%, rgba(255, 255, 255, 0.8) 42%, transparent 42%),
+    radial-gradient(circle at 90% 60%, transparent 0%, transparent 40%, rgba(255, 215, 0, 0.6) 40%, rgba(255, 215, 0, 0.6) 41%, transparent 41%),
+    radial-gradient(circle at 15% 85%, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.7) 42%, transparent 42%);
+  background-size: 8px 8px, 6px 6px, 7px 7px, 5px 5px, 6px 6px, 7px 7px;
+}
+
+/* Glitter shimmer effect */
+.logo-link:hover::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%) rotate(45deg);
+  animation: glitter-sweep 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Glow animation */
+@keyframes logo-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6)) 
+            drop-shadow(0 0 25px rgba(255, 255, 255, 0.4))
+            brightness(1.1);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)) 
+            drop-shadow(0 0 35px rgba(255, 255, 255, 0.6))
+            brightness(1.15);
+  }
+}
+
+/* Sparkle rotation animation */
+@keyframes sparkle-rotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* Glitter sweep animation */
+@keyframes glitter-sweep {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(200%) rotate(45deg);
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .logo-link:hover .header-logo,
+  .logo-link:hover::before,
+  .logo-link:hover::after {
+    animation: none;
+  }
+  .logo-link:hover .header-logo {
+    transform: none;
+  }
 }
 
 .menu-toggle {

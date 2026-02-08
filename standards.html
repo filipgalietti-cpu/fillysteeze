@@ -116,8 +116,9 @@
             font-size: 1.05em;
         }
 
-        .alignment-info li {
-            margin-bottom: 12px;
+        .error-display {
+            text-align: center;
+            color: var(--error);
         }
     </style>
 </head>
@@ -171,7 +172,7 @@
             
             <div class="coverage-stats">
                 <div class="stat-box">
-                    <span class="stat-number">7</span>
+                    <span class="stat-number">6</span>
                     <span class="stat-label">Grade Bands</span>
                 </div>
                 <div class="stat-box">
@@ -215,9 +216,10 @@
                 const standardsGrid = document.getElementById('standards-grid');
                 
                 // Skip header row, process data rows
+                const MIN_CSV_LINE_LENGTH = 5; // Minimum characters for a valid CSV row
                 for (let i = 1; i < lines.length; i++) {
                     const line = lines[i].trim();
-                    if (line && line.length > 5) {
+                    if (line && line.length > MIN_CSV_LINE_LENGTH) {
                         // Parse CSV line (simple parsing for this structured data)
                         const parts = line.split(',');
                         if (parts.length >= 3) {
@@ -243,7 +245,7 @@
             .catch(error => {
                 console.error('Error loading standards:', error);
                 document.getElementById('standards-grid').innerHTML = 
-                    '<p style="text-align: center; color: var(--error);">Unable to load standards data. Please try again later.</p>';
+                    '<p class="error-display">Unable to load standards data. Please try again later.</p>';
             });
 
         // Load PA Pre-K locations count from CSV

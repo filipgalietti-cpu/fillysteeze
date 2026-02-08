@@ -226,6 +226,7 @@ if (roleSelect && studentsInput) {
             // Show learning disabilities question
             if (learningDisabilitiesGroup) {
                 learningDisabilitiesGroup.style.display = 'block';
+                learningDisabilitiesGroup.querySelector('label').textContent = 'Does your classroom have children with learning disabilities or special needs?';
             }
         } else if (this.value === 'parent') {
             // Disable number of students for parents
@@ -237,6 +238,7 @@ if (roleSelect && studentsInput) {
             // Show learning disabilities question for parents
             if (learningDisabilitiesGroup) {
                 learningDisabilitiesGroup.style.display = 'block';
+                learningDisabilitiesGroup.querySelector('label').textContent = 'Does your child have a learning disability or special needs?';
             }
         } else {
             // Disable and clear for other roles

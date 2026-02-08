@@ -203,7 +203,7 @@ section h2 {
 }
 
 .logo{
-  width:240px;
+  width:260px;
   height:auto;
   display:block;
   transform-origin: 50% 80%;
@@ -240,7 +240,7 @@ section h2 {
   animation: readee-shine 900ms ease-in-out infinite;
 }
 
-/* The “dance” */
+/* The "dance" */
 @keyframes readee-dance{
   0%   { transform: translateY(0) rotate(0deg) scale(1); }
   20%  { transform: translateY(-3px) rotate(-2deg) scale(1.02); }
@@ -250,7 +250,7 @@ section h2 {
   100% { transform: translateY(0) rotate(0deg) scale(1); }
 }
 
-/* The “shine sweep” */
+/* The "shine sweep" */
 @keyframes readee-shine{
   0%   { transform: translateX(-70%) rotate(8deg); }
   100% { transform: translateX(70%) rotate(8deg); }

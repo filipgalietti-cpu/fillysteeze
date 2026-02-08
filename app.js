@@ -1,6 +1,5 @@
 // ===== MENU TOGGLE =====
 const menuToggle = document.getElementById('menuToggle');
-const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const navMenu = document.getElementById('navMenu');
 
 if (menuToggle && navMenu) {
@@ -10,8 +9,8 @@ if (menuToggle && navMenu) {
     });
     
     // Close menu when clicking on a link
-    const navLinks = navMenu.querySelectorAll('a');
-    navLinks.forEach(link => {
+    const menuNavLinks = navMenu.querySelectorAll('a');
+    menuNavLinks.forEach(link => {
         link.addEventListener('click', () => {
             menuToggle.classList.remove('active');
             navMenu.classList.remove('active');
@@ -26,21 +25,6 @@ if (menuToggle && navMenu) {
         }
     });
 }
-
-// ===== MOBILE MENU TOGGLE =====
-if (mobileMenuToggle) {
-    mobileMenuToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-    });
-}
-
-// Close mobile menu when clicking on a link
-const navLinks = document.querySelectorAll('.nav-menu a');
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-    });
-});
 
 // ===== SMOOTH SCROLLING =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

@@ -85,13 +85,13 @@ footer p {
 /* Hero */
 #hero {
   background: var(--primary-gradient);
-  min-height: 500px;
+  min-height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   color: white;
-  padding: 60px 20px;
+  padding: 60px 20px 40px 20px;
   text-align: center;
 }
 
@@ -103,10 +103,11 @@ footer p {
 }
 
 #hero p {
-  font-size: 1.15em;
+  font-size: 1.3em;
   max-width: 680px;
   line-height: 1.7;
-  opacity: 0.92;
+  opacity: 0.95;
+  font-weight: 400;
 }
 
 .get-started-button {
@@ -322,14 +323,60 @@ section h2 {
   color: var(--text-medium);
 }
 
-#about h1 {
-  margin-bottom: 20px;
+/* About Section */
+#about {
+  background: var(--primary-gradient);
+  padding: 40px 20px 80px 20px;
 }
 
-#about p {
-  max-width: 700px;
+#about .container {
+  max-width: 1200px;
   margin: 0 auto;
-  line-height: 1.7;
+}
+
+#about h2 {
+  color: white;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 1.8em;
+}
+
+.about-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: none;
+  border-radius: 16px;
+  color: white;
+  text-align: center;
+  padding: 32px 24px;
+}
+
+.about-card:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.about-card h3 {
+  color: white;
+  font-size: 1.3em;
+  margin: 16px 0 12px 0;
+}
+
+.about-card p {
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.6;
+  font-size: 1em;
+}
+
+.card-icon {
+  font-size: 3em;
+  margin-bottom: 8px;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 40px;
 }
 
 /* Questionnaire Page Styles */

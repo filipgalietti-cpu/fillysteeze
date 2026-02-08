@@ -159,10 +159,10 @@ if (intakeForm) {
             isValid = false;
         }
         
-        // If form is valid, show success message
+        // If form is valid, redirect to thank you page
+        // Note: This is a static demo. In production, form data should be submitted to a backend before redirecting.
         if (isValid) {
-            showSuccessMessage();
-            intakeForm.reset();
+            window.location.href = 'thankyou.html';
         }
     });
 }

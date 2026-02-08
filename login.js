@@ -5,6 +5,7 @@ const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
 const usernameError = document.getElementById('username-error');
 const passwordError = document.getElementById('password-error');
+const submitButton = loginForm ? loginForm.querySelector('.login-button') : null;
 
 // Form submission handler
 if (loginForm) {
@@ -23,8 +24,8 @@ if (loginForm) {
             isValid = false;
         }
         
-        // Validate password
-        const passwordValue = passwordInput.value.trim();
+        // Validate password (don't trim - preserve exact input)
+        const passwordValue = passwordInput.value;
         if (passwordValue.length === 0) {
             showError(passwordInput, passwordError, 'Please enter your password');
             isValid = false;
@@ -53,7 +54,8 @@ function showError(input, errorElement, message) {
 
 // Handle login (placeholder - would connect to backend in production)
 function handleLogin(username, password) {
-    const submitButton = loginForm.querySelector('.login-button');
+    if (!submitButton) return;
+    
     const originalText = submitButton.textContent;
     
     // Show loading state
@@ -90,8 +92,8 @@ ssoButtons.forEach(button => {
     button.addEventListener('click', function(e) {
         e.preventDefault();
         
-        const buttonText = this.textContent.trim();
-        const originalText = buttonText;
+        const provider = this.getAttribute('data-provider');
+        const originalText = this.textContent.trim();
         
         // Show loading state
         this.textContent = 'Redirecting...';
@@ -99,13 +101,13 @@ ssoButtons.forEach(button => {
         
         // In production, these would redirect to respective SSO providers
         setTimeout(() => {
-            if (buttonText.includes('Google')) {
+            if (provider === 'google') {
                 // window.location.href = '/auth/google';
                 console.log('Google SSO clicked');
-            } else if (buttonText.includes('Clever')) {
+            } else if (provider === 'clever') {
                 // window.location.href = '/auth/clever';
                 console.log('Clever SSO clicked');
-            } else if (buttonText.includes('ClassLink')) {
+            } else if (provider === 'classlink') {
                 // window.location.href = '/auth/classlink';
                 console.log('ClassLink SSO clicked');
             }

@@ -21,31 +21,30 @@
             <form id="intakeForm">
                 <div class="form-group">
                     <label for="name">Full Name *</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
                     <span class="error-message"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
                     <span class="error-message"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="role">I am a... *</label>
                     <select id="role" name="role" required>
-                        <option value="">-- Please select --</option>
+                        <option value="">-- Please select your role --</option>
                         <option value="parent">Parent/Guardian</option>
-                        <option value="admin">School Administrator</option>
-                        <option value="teacher">Teacher</option>
+                        <option value="teacher">Teacher or School Administrator</option>
                         <option value="student">Student</option>
                     </select>
                     <span class="error-message"></span>
                 </div>
 
                 <div class="form-group">
-                    <label for="school">School Name (if applicable)</label>
-                    <input type="text" id="school" name="school" list="school-list" placeholder="Select or type school name">
+                    <label for="school">School District</label>
+                    <input type="text" id="school" name="school" list="school-list" placeholder="Enter your school district name">
                     <datalist id="school-list">
                         <option value="N/A">N/A</option>
                     </datalist>
@@ -56,9 +55,9 @@
                     <input type="text" id="grade" name="grade" placeholder="e.g., K-2, 3rd Grade">
                 </div>
 
-                <div class="form-group">
-                    <label for="students">Number of Students (if applicable)</label>
-                    <input type="number" id="students" name="students" min="1">
+                <div class="form-group" id="students-group">
+                    <label for="students">Number of Students</label>
+                    <input type="number" id="students" name="students" min="1" placeholder="Enter number of students" disabled>
                 </div>
 
                 <div class="form-group">

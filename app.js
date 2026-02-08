@@ -210,6 +210,27 @@ formInputs.forEach(input => {
     });
 });
 
+// ===== CONDITIONAL NUMBER OF STUDENTS FIELD =====
+const roleSelect = document.getElementById('role');
+const studentsInput = document.getElementById('students');
+
+if (roleSelect && studentsInput) {
+    roleSelect.addEventListener('change', function() {
+        if (this.value === 'teacher') {
+            // Enable the number of students field for teachers/administrators
+            studentsInput.disabled = false;
+            studentsInput.required = true;
+            studentsInput.parentElement.querySelector('label').innerHTML = 'Number of Students *';
+        } else {
+            // Disable and clear for other roles
+            studentsInput.disabled = true;
+            studentsInput.required = false;
+            studentsInput.value = '';
+            studentsInput.parentElement.querySelector('label').innerHTML = 'Number of Students';
+        }
+    });
+}
+
 // ===== LOAD SCHOOL NAMES FROM CSV =====
 const schoolList = document.getElementById('school-list');
 

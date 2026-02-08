@@ -309,29 +309,28 @@ section h2 {
 
 .process-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--bg-white);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-top: none;
   border-radius: 16px;
-  color: white;
+  color: var(--text-dark);
   text-align: center;
   transition: all 0.3s ease;
 }
 
 .process-card:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--bg-white);
   transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
 
 .process-card h3 {
-  color: white;
+  color: var(--text-dark);
   font-size: 1.3em;
 }
 
 .process-card p {
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--text-medium);
 }
 
 .step-badge {
@@ -340,21 +339,21 @@ section h2 {
   font-size: 0.9em;
   padding: 8px 16px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--primary);
   color: white;
   margin-bottom: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--primary-dark);
 }
 
 .result-line {
   margin-top: 14px;
   padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.9);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--text-medium);
 }
 
 .result-line strong {
-  color: white;
+  color: var(--text-dark);
 }
 
 /* About Section */
@@ -376,32 +375,31 @@ section h2 {
 }
 
 .about-card {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--bg-white);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-top: none;
   border-radius: 16px;
-  color: white;
+  color: var(--text-dark);
   text-align: center;
   padding: 36px 28px;
   transition: all 0.3s ease;
 }
 
 .about-card:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--bg-white);
   transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
 
 .about-card h3 {
-  color: white;
+  color: var(--text-dark);
   font-size: 1.4em;
   margin: 16px 0 14px 0;
   font-weight: 600;
 }
 
 .about-card p {
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--text-medium);
   line-height: 1.7;
   font-size: 1.05em;
 }

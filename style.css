@@ -336,16 +336,6 @@ section h2 {
   border-top-color: var(--primary);
 }
 
-#about h1 {
-  margin-bottom: 20px;
-}
-
-#about p {
-  max-width: 700px;
-  margin: 0 auto;
-  line-height: 1.7;
-}
-
 /* Questionnaire Page Styles */
 #questionnaire-hero {
   background: var(--primary-gradient);

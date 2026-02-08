@@ -72,6 +72,7 @@ header {
   display: inline-block;
   text-decoration: none;
   position: relative;
+  overflow: hidden;
 }
 
 .header-logo {
@@ -92,6 +93,7 @@ header {
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
+  z-index: 2;
 }
 
 /* Logo hover effects */
@@ -107,13 +109,13 @@ header {
   opacity: 1;
   animation: sparkle-rotate 3s linear infinite;
   background: 
-    radial-gradient(circle at 20% 30%, transparent 0%, transparent 40%, rgba(255, 215, 0, 0.8) 40%, rgba(255, 215, 0, 0.8) 42%, transparent 42%),
-    radial-gradient(circle at 80% 20%, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.9) 40%, rgba(255, 255, 255, 0.9) 43%, transparent 43%),
-    radial-gradient(circle at 70% 80%, transparent 0%, transparent 40%, rgba(255, 215, 0, 0.7) 40%, rgba(255, 215, 0, 0.7) 42%, transparent 42%),
-    radial-gradient(circle at 30% 70%, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.8) 40%, rgba(255, 255, 255, 0.8) 42%, transparent 42%),
-    radial-gradient(circle at 90% 60%, transparent 0%, transparent 40%, rgba(255, 215, 0, 0.6) 40%, rgba(255, 215, 0, 0.6) 41%, transparent 41%),
-    radial-gradient(circle at 15% 85%, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.7) 42%, transparent 42%);
-  background-size: 8px 8px, 6px 6px, 7px 7px, 5px 5px, 6px 6px, 7px 7px;
+    radial-gradient(circle at 20% 30%, transparent 0%, transparent 35%, rgba(255, 215, 0, 0.9) 35%, rgba(255, 215, 0, 0.9) 45%, transparent 45%),
+    radial-gradient(circle at 80% 20%, transparent 0%, transparent 35%, rgba(255, 255, 255, 1) 35%, rgba(255, 255, 255, 1) 48%, transparent 48%),
+    radial-gradient(circle at 70% 80%, transparent 0%, transparent 35%, rgba(255, 215, 0, 0.8) 35%, rgba(255, 215, 0, 0.8) 45%, transparent 45%),
+    radial-gradient(circle at 30% 70%, transparent 0%, transparent 35%, rgba(255, 255, 255, 0.9) 35%, rgba(255, 255, 255, 0.9) 45%, transparent 45%),
+    radial-gradient(circle at 90% 60%, transparent 0%, transparent 35%, rgba(255, 215, 0, 0.7) 35%, rgba(255, 215, 0, 0.7) 44%, transparent 44%),
+    radial-gradient(circle at 15% 85%, transparent 0%, transparent 35%, rgba(255, 255, 255, 0.8) 35%, rgba(255, 255, 255, 0.8) 45%, transparent 45%);
+  background-size: 12px 12px, 10px 10px, 11px 11px, 9px 9px, 10px 10px, 11px 11px;
 }
 
 /* Glitter shimmer effect */
@@ -126,13 +128,14 @@ header {
   bottom: -50%;
   background: linear-gradient(
     45deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.3) 50%,
-    transparent 70%
+    transparent 20%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 80%
   );
   transform: translateX(-100%) rotate(45deg);
   animation: glitter-sweep 2s ease-in-out infinite;
   pointer-events: none;
+  z-index: 3;
 }
 
 /* Glow animation */

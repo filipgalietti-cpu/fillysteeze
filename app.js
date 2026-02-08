@@ -345,3 +345,84 @@ function parseCSVLine(line) {
 
 // ===== INITIALIZE =====
 console.log('BrightSteps Learning Platform Loaded ✓');
+
+// ===== CONFETTI EFFECT FOR THANK YOU PAGE =====
+const confettiCanvas = document.getElementById('confetti-canvas');
+
+if (confettiCanvas) {
+    const ctx = confettiCanvas.getContext('2d');
+    
+    // Set canvas size
+    function resizeCanvas() {
+        confettiCanvas.width = window.innerWidth;
+        confettiCanvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    // Confetti particles
+    const confettiParticles = [];
+    const confettiColors = ['#4F46E5', '#7C3AED', '#0D9488', '#D97706', '#E11D48', '#0284C7', '#FFD700', '#FF69B4', '#00CED1'];
+    
+    class Confetti {
+        constructor() {
+            this.x = Math.random() * confettiCanvas.width;
+            this.y = Math.random() * confettiCanvas.height - confettiCanvas.height;
+            this.size = Math.random() * 8 + 5;
+            this.speedY = Math.random() * 3 + 2;
+            this.speedX = Math.random() * 2 - 1;
+            this.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+            this.rotation = Math.random() * 360;
+            this.rotationSpeed = Math.random() * 10 - 5;
+            this.shape = Math.random() > 0.5 ? 'circle' : 'square';
+        }
+        
+        update() {
+            this.y += this.speedY;
+            this.x += this.speedX;
+            this.rotation += this.rotationSpeed;
+            
+            // Reset if particle goes off screen
+            if (this.y > confettiCanvas.height) {
+                this.y = -20;
+                this.x = Math.random() * confettiCanvas.width;
+            }
+        }
+        
+        draw() {
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotation * Math.PI / 180);
+            ctx.fillStyle = this.color;
+            
+            if (this.shape === 'circle') {
+                ctx.beginPath();
+                ctx.arc(0, 0, this.size / 2, 0, Math.PI * 2);
+                ctx.fill();
+            } else {
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+            }
+            
+            ctx.restore();
+        }
+    }
+    
+    // Create initial confetti particles
+    for (let i = 0; i < 100; i++) {
+        confettiParticles.push(new Confetti());
+    }
+    
+    // Animation loop
+    function animateConfetti() {
+        ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        
+        confettiParticles.forEach(particle => {
+            particle.update();
+            particle.draw();
+        });
+        
+        requestAnimationFrame(animateConfetti);
+    }
+    
+    animateConfetti();
+}

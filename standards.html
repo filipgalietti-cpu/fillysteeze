@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELA Standards - READEE</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .standards-intro {
+            max-width: 900px;
+            margin: 0 auto 40px;
+            text-align: center;
+            color: var(--text-medium);
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .standard-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            padding: 28px;
+            transition: all 0.3s ease;
+            border-left: 6px solid var(--primary);
+        }
+
+        .standard-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .grade-band {
+            display: inline-block;
+            background: var(--primary-gradient);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.95em;
+            margin-bottom: 16px;
+        }
+
+        .focus-area {
+            color: var(--primary-dark);
+            font-size: 1.3em;
+            font-weight: 600;
+            margin: 12px 0;
+        }
+
+        .expectations {
+            color: var(--text-medium);
+            line-height: 1.7;
+            font-size: 1.05em;
+        }
+
+        .coverage-section {
+            background: var(--bg-lavender);
+            padding: 60px 20px;
+            margin-top: 60px;
+        }
+
+        .coverage-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .stat-box {
+            background: var(--bg-white);
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--text-medium);
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+
+        .alignment-info {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 800px;
+            margin: 40px auto;
+            box-shadow: var(--shadow-md);
+        }
+
+        .alignment-info h3 {
+            color: var(--primary-dark);
+            margin-top: 0;
+        }
+
+        .alignment-info ul {
+            color: var(--text-medium);
+            line-height: 2;
+            font-size: 1.05em;
+        }
+
+        .alignment-info li {
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+       <div class="header-container">
+           <a href="index.html" class="logo-link">
+               <img src="readee-logo.png" alt="READEE logo" class="header-logo">
+           </a>
+           <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">
+               <span class="menu-text">Menu</span>
+               <span class="hamburger-icon">
+                   <span></span>
+                   <span></span>
+                   <span></span>
+               </span>
+           </button>
+       </div>
+       <nav id="navMenu" class="nav-menu">
+           <a href="index.html">Home</a>
+           <a href="standards.html">ELA Standards</a>
+           <a href="questionnaire.html">Get Started</a>
+       </nav>
+    </header>
+
+    <div id="hero">
+        <h1>How READEE Follows ELA Standards</h1>
+        <p>Aligned with English Language Arts Standards Across All Grade Levels</p>
+    </div>
+
+    <section id="standards-content">
+        <div class="container">
+            <div class="standards-intro">
+                <p>
+                    READEE is carefully designed to support students at every stage of their literacy journey. 
+                    Our curriculum aligns with Common Core State Standards for English Language Arts (ELA), 
+                    ensuring that students develop the reading, writing, speaking, and listening skills they 
+                    need to succeed in school and beyond.
+                </p>
+            </div>
+
+            <div id="standards-grid" class="standards-grid">
+                <!-- Standards will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <section class="coverage-section">
+        <div class="container">
+            <h2>READEE's Standards Coverage</h2>
+            
+            <div class="coverage-stats">
+                <div class="stat-box">
+                    <span class="stat-number">7</span>
+                    <span class="stat-label">Grade Bands</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number" id="pa-schools-count">...</span>
+                    <span class="stat-label">PA Pre-K Locations</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Standards Aligned</span>
+                </div>
+            </div>
+
+            <div class="alignment-info">
+                <h3>🎯 How READEE Supports ELA Standards</h3>
+                <ul>
+                    <li><strong>Foundational Skills:</strong> Systematic phonics, decoding, and fluency development</li>
+                    <li><strong>Reading Comprehension:</strong> Evidence-based strategies for understanding literary and informational texts</li>
+                    <li><strong>Vocabulary Development:</strong> Academic language building at every grade level</li>
+                    <li><strong>Writing Skills:</strong> Structured practice in narrative, informative, and argumentative writing</li>
+                    <li><strong>Critical Thinking:</strong> Analysis, synthesis, and evaluation of complex texts</li>
+                    <li><strong>Discussion Skills:</strong> Collaborative learning and academic discourse</li>
+                </ul>
+            </div>
+
+            <div class="button-container">
+                <a href="questionnaire.html" class="get-started-button">Get Started with READEE</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 READEE. Building stronger readers.</p>
+    </footer>
+
+    <script>
+        // Load and display standards from CSV
+        fetch('learning standards table .csv')
+            .then(response => response.text())
+            .then(data => {
+                const lines = data.split('\n');
+                const standardsGrid = document.getElementById('standards-grid');
+                
+                // Skip header row, process data rows
+                for (let i = 1; i < lines.length; i++) {
+                    const line = lines[i].trim();
+                    if (line && line.length > 5) {
+                        // Parse CSV line (simple parsing for this structured data)
+                        const parts = line.split(',');
+                        if (parts.length >= 3) {
+                            const gradeBand = parts[0].trim();
+                            const focusArea = parts[1].trim();
+                            // Join remaining parts for expectations (in case there are commas in the text)
+                            const expectations = parts.slice(2).join(',').trim().replace(/^"|"$/g, '');
+                            
+                            if (gradeBand && focusArea && expectations) {
+                                const card = document.createElement('div');
+                                card.className = 'standard-card';
+                                card.innerHTML = `
+                                    <span class="grade-band">${gradeBand}</span>
+                                    <div class="focus-area">${focusArea}</div>
+                                    <div class="expectations">${expectations}</div>
+                                `;
+                                standardsGrid.appendChild(card);
+                            }
+                        }
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error loading standards:', error);
+                document.getElementById('standards-grid').innerHTML = 
+                    '<p style="text-align: center; color: var(--error);">Unable to load standards data. Please try again later.</p>';
+            });
+
+        // Load PA Pre-K locations count from CSV
+        fetch('pa_public_prek_counts_locations_by_zip.csv')
+            .then(response => response.text())
+            .then(data => {
+                const lines = data.split('\n');
+                // Count non-empty lines excluding header
+                let locationCount = 0;
+                for (let i = 1; i < lines.length; i++) {
+                    if (lines[i].trim().length > 0) {
+                        locationCount++;
+                    }
+                }
+                
+                // Update the display
+                const countElement = document.getElementById('pa-schools-count');
+                if (countElement) {
+                    countElement.textContent = locationCount.toLocaleString();
+                }
+                
+                console.log(`Loaded ${locationCount} PA Pre-K locations`);
+            })
+            .catch(error => {
+                console.error('Error loading PA schools data:', error);
+                const countElement = document.getElementById('pa-schools-count');
+                if (countElement) {
+                    countElement.textContent = '1000+';
+                }
+            });
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>

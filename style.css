@@ -296,37 +296,68 @@ section h2 {
   }
 }
 /* READEE Process Tiles */
+#readee-process {
+  background: var(--primary-gradient);
+  padding: 60px 20px 80px 20px;
+}
+
 #readee-process h2 {
-  margin-bottom: 22px;
+  color: white;
+  margin-bottom: 40px;
 }
 
 .process-card {
   position: relative;
-  border-top-color: var(--accent-sky);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: none;
+  border-radius: 16px;
+  color: white;
+  text-align: center;
+}
+
+.process-card:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.process-card h3 {
+  color: white;
+  font-size: 1.3em;
+}
+
+.process-card p {
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .step-badge {
   display: inline-block;
   font-weight: 700;
   font-size: 0.9em;
-  padding: 6px 10px;
+  padding: 8px 16px;
   border-radius: 999px;
-  background: var(--bg-lavender);
-  color: var(--primary-dark);
-  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .result-line {
   margin-top: 14px;
   padding-top: 12px;
-  border-top: 1px solid rgba(0,0,0,0.08);
-  color: var(--text-medium);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.result-line strong {
+  color: white;
 }
 
 /* About Section */
 #about {
   background: var(--primary-gradient);
-  padding: 40px 20px 80px 20px;
+  padding: 60px 20px 80px 20px;
 }
 
 #about .container {
@@ -349,34 +380,39 @@ section h2 {
   border-radius: 16px;
   color: white;
   text-align: center;
-  padding: 32px 24px;
+  padding: 36px 28px;
+  transition: all 0.3s ease;
 }
 
 .about-card:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .about-card h3 {
   color: white;
-  font-size: 1.3em;
-  margin: 16px 0 12px 0;
+  font-size: 1.4em;
+  margin: 16px 0 14px 0;
+  font-weight: 600;
 }
 
 .about-card p {
   color: rgba(255, 255, 255, 0.95);
-  line-height: 1.6;
-  font-size: 1em;
+  line-height: 1.7;
+  font-size: 1.05em;
 }
 
 .card-icon {
-  font-size: 3em;
+  font-size: 3.5em;
   margin-bottom: 8px;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
 }
 
 .button-container {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 48px;
 }
 
 /* Questionnaire Page Styles */

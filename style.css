@@ -76,27 +76,88 @@ header {
 }
 
 .header-logo {
-  font-size: 2.5em;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  color: white;
-  display: inline-block;
-  transition: transform 0.3s ease, filter 0.3s ease, text-shadow 0.3s ease;
-  font-family: var(--font-family-system);
+  height: 90px;
+  width: auto;
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* Sparkle effect for text */
+/* Colorful logo for index.html - matches "About READEE" h1 style */
+.colorful-logo {
+  height: auto;
+  width: auto;
+  font-size: 3.2em;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  font-family: var(--font-family-system);
+  display: inline-block;
+}
+
+.colorful-logo .letter-r {
+  color: #4F46E5; /* Blue */
+}
+
+.colorful-logo .letter-e1 {
+  color: #FCD34D; /* Yellow */
+}
+
+.colorful-logo .letter-a {
+  color: #10B981; /* Green */
+}
+
+.colorful-logo .letter-d {
+  color: #EF4444; /* Red */
+}
+
+.colorful-logo .letter-e2 {
+  color: #4F46E5; /* Blue */
+}
+
+.colorful-logo .letter-e3 {
+  color: #10B981; /* Green */
+}
+
+/* Sparkle container */
 .logo-link::before {
   content: '';
   position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 2;
+  mask-image: url('readee-logo.png');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url('readee-logo.png');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
+
+/* Logo hover effects */
+.logo-link:hover .header-logo {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6)) 
+          drop-shadow(0 0 25px rgba(255, 255, 255, 0.4))
+          brightness(1.1);
+  animation: logo-glow 1.5s ease-in-out infinite;
+}
+
+/* Colorful logo hover - no image filters, just text effects */
+.logo-link:hover .colorful-logo {
+  transform: scale(1.05);
+  filter: none;
+  animation: logo-glow-text 1.5s ease-in-out infinite;
+}
+
+.logo-link:hover::before {
+  opacity: 0.3;
+  animation: sparkle-rotate 3s linear infinite;
   background: 
     radial-gradient(circle at 20% 30%, transparent 0%, transparent 40%, rgba(255, 215, 0, 0.15) 40%, rgba(255, 215, 0, 0.15) 42%, transparent 42%),
     radial-gradient(circle at 80% 20%, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.2) 40%, rgba(255, 255, 255, 0.2) 43%, transparent 43%),
@@ -107,54 +168,55 @@ header {
   background-size: 12px 12px, 10px 10px, 11px 11px, 9px 9px, 10px 10px, 11px 11px;
 }
 
-/* Logo hover effects */
-.logo-link:hover .header-logo {
-  transform: scale(1.05);
-  text-shadow: 
-    0 0 15px rgba(255, 215, 0, 0.6),
-    0 0 25px rgba(255, 255, 255, 0.4),
-    0 2px 8px rgba(0, 0, 0, 0.3);
-  animation: logo-glow 1.5s ease-in-out infinite;
-}
-
-.logo-link:hover::before {
-  opacity: 0.4;
-  animation: sparkle-rotate 3s linear infinite;
-}
-
 /* Glitter shimmer effect */
 .logo-link:hover::after {
   content: '';
   position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: linear-gradient(
     45deg,
     transparent 30%,
-    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.15) 50%,
     transparent 70%
   );
   transform: translateX(-100%);
   animation: glitter-sweep 2s ease-in-out infinite;
   pointer-events: none;
   z-index: 3;
+  mask-image: url('readee-logo.png');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url('readee-logo.png');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
 }
 
 /* Glow animation */
 @keyframes logo-glow {
   0%, 100% {
-    text-shadow: 
-      0 0 15px rgba(255, 215, 0, 0.6),
-      0 0 25px rgba(255, 255, 255, 0.4),
-      0 2px 8px rgba(0, 0, 0, 0.3);
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6)) 
+            drop-shadow(0 0 25px rgba(255, 255, 255, 0.4))
+            brightness(1.1);
   }
   50% {
-    text-shadow: 
-      0 0 20px rgba(255, 215, 0, 0.8),
-      0 0 35px rgba(255, 255, 255, 0.6),
-      0 2px 10px rgba(0, 0, 0, 0.4);
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)) 
+            drop-shadow(0 0 35px rgba(255, 255, 255, 0.6))
+            brightness(1.15);
+  }
+}
+
+/* Glow animation for colorful text logo */
+@keyframes logo-glow-text {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
   }
 }
 

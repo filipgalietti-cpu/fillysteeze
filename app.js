@@ -220,13 +220,13 @@ if (roleSelect && studentsInput) {
             // Enable the number of students field for teachers/administrators
             studentsInput.disabled = false;
             studentsInput.required = true;
-            studentsInput.parentElement.querySelector('label').innerHTML = 'Number of Students *';
+            studentsInput.parentElement.querySelector('label').textContent = 'Number of Students *';
         } else {
             // Disable and clear for other roles
             studentsInput.disabled = true;
             studentsInput.required = false;
             studentsInput.value = '';
-            studentsInput.parentElement.querySelector('label').innerHTML = 'Number of Students';
+            studentsInput.parentElement.querySelector('label').textContent = 'Number of Students';
         }
     });
 }

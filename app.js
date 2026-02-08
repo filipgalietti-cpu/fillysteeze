@@ -36,19 +36,22 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // ===== NAVBAR SCROLL EFFECT =====
 const navbar = document.querySelector('.navbar');
-let lastScroll = 0;
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+if (navbar) {
+    let lastScroll = 0;
     
-    if (currentScroll > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-    
-    lastScroll = currentScroll;
-});
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        
+        lastScroll = currentScroll;
+    });
+}
 
 // ===== FAQ ACCORDION =====
 const faqItems = document.querySelectorAll('.faq-item');
@@ -71,6 +74,7 @@ faqItems.forEach(item => {
 
 // ===== FORM VALIDATION =====
 const contactForm = document.getElementById('contactForm');
+const intakeForm = document.getElementById('intakeForm');
 
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
@@ -108,6 +112,46 @@ if (contactForm) {
         if (isValid) {
             showSuccessMessage();
             contactForm.reset();
+        }
+    });
+}
+
+if (intakeForm) {
+    intakeForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Clear previous errors
+        const errorMessages = document.querySelectorAll('.error-message');
+        errorMessages.forEach(msg => msg.textContent = '');
+        
+        let isValid = true;
+        
+        // Validate name
+        const name = document.getElementById('name');
+        if (name.value.trim().length < 2) {
+            showError(name, 'Please enter your full name');
+            isValid = false;
+        }
+        
+        // Validate email
+        const email = document.getElementById('email');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email.value.trim())) {
+            showError(email, 'Please enter a valid email address');
+            isValid = false;
+        }
+        
+        // Validate role
+        const role = document.getElementById('role');
+        if (role.value === '') {
+            showError(role, 'Please select your role');
+            isValid = false;
+        }
+        
+        // If form is valid, show success message
+        if (isValid) {
+            showSuccessMessage();
+            intakeForm.reset();
         }
     });
 }

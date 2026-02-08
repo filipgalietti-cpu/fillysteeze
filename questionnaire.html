@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - READEE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+       <img src="readee-logo.png" alt="READEE logo" width="538">
+    </header>
+    
+    <div id="questionnaire-hero">
+        <h1>Get Started with READEE</h1>
+        <p>Tell us a bit about yourself so we can help you get started!</p>
+    </div>
+
+    <section id="questionnaire-form" class="container">
+        <div class="form-container">
+            <form id="intakeForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="role">I am a... *</label>
+                    <select id="role" name="role" required>
+                        <option value="">-- Please select --</option>
+                        <option value="parent">Parent/Guardian</option>
+                        <option value="admin">School Administrator</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="student">Student</option>
+                    </select>
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="school">School Name (if applicable)</label>
+                    <input type="text" id="school" name="school">
+                </div>
+
+                <div class="form-group">
+                    <label for="grade">Grade Level(s) of Interest</label>
+                    <input type="text" id="grade" name="grade" placeholder="e.g., K-2, 3rd Grade">
+                </div>
+
+                <div class="form-group">
+                    <label for="students">Number of Students (if applicable)</label>
+                    <input type="number" id="students" name="students" min="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="goals">What are your reading goals?</label>
+                    <textarea id="goals" name="goals" rows="4" placeholder="Tell us what you hope to achieve with READEE..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="referral">How did you hear about READEE?</label>
+                    <select id="referral" name="referral">
+                        <option value="">-- Please select --</option>
+                        <option value="search">Online Search</option>
+                        <option value="social">Social Media</option>
+                        <option value="friend">Friend/Colleague</option>
+                        <option value="school">School/District</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-button">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 READEE. Building stronger readers.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

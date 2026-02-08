@@ -84,8 +84,6 @@ header {
 
 /* Colorful logo for index.html - matches "About READEE" h1 style */
 .colorful-logo {
-  height: auto;
-  width: auto;
   font-size: 3.2em;
   font-weight: 800;
   letter-spacing: 0.5px;
@@ -139,8 +137,8 @@ header {
   -webkit-mask-position: center;
 }
 
-/* Logo hover effects */
-.logo-link:hover .header-logo {
+/* Logo hover effects - only for PNG logos */
+.logo-link:hover .header-logo:not(.colorful-logo) {
   transform: scale(1.05);
   filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6)) 
           drop-shadow(0 0 25px rgba(255, 255, 255, 0.4))

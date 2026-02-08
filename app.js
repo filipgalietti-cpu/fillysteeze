@@ -116,7 +116,7 @@ function showError(input, message) {
     const formGroup = input.closest('.form-group');
     const errorMessage = formGroup.querySelector('.error-message');
     errorMessage.textContent = message;
-    input.style.borderColor = '#dc2626';
+    input.style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--error').trim();
 }
 
 function showSuccessMessage() {
@@ -124,7 +124,7 @@ function showSuccessMessage() {
     const originalText = submitButton.textContent;
     
     submitButton.textContent = '✓ Message Sent! We\'ll be in touch soon.';
-    submitButton.style.background = '#10b981';
+    submitButton.style.background = getComputedStyle(document.documentElement).getPropertyValue('--success').trim();
     submitButton.disabled = true;
     
     setTimeout(() => {

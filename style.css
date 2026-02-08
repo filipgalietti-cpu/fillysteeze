@@ -1,14 +1,196 @@
 :root {
-  --primary-blue: #6366F1;
-  --accent-green: #22C55E;
-  --accent-orange: #F59E0B;
-  --accent-coral: #FB7185;
-  --text-dark: #0F172A;
-  --text-medium: #334155;
-  --text-light: #64748B;
+  /* Primary palette */
+  --primary: #4F46E5;
+  --primary-dark: #3730A3;
+  --primary-light: #818CF8;
+  --primary-gradient: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+
+  /* Accent colors */
+  --accent-teal: #0D9488;
+  --accent-amber: #D97706;
+  --accent-coral: #E11D48;
+  --accent-sky: #0284C7;
+
+  /* Text */
+  --text-dark: #1E293B;
+  --text-medium: #475569;
+  --text-light: #94A3B8;
+
+  /* Backgrounds */
   --bg-white: #FFFFFF;
-  --bg-light: #F8FAFC;
-  --bg-lighter: #EFF6FF;
+  --bg-page: #F8FAFC;
+  --bg-lavender: #EEF2FF;
+  --bg-mint: #F0FDFA;
+  --bg-amber: #FFFBEB;
+  --bg-rose: #FFF1F2;
+
+  /* Status */
+  --success: #059669;
+  --error: #DC2626;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* Keep all other CSS rules the same */
+body {
+  font-family: Arial, sans-serif;
+  color: var(--text-dark);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+/* Header & Footer */
+header {
+  background: var(--primary-gradient);
+  color: #fff;
+  padding: 18px 0;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+footer {
+  background: var(--primary-gradient);
+  color: #fff;
+  text-align: center;
+  padding: 18px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+footer p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Hero */
+#hero {
+  background: var(--primary-gradient);
+  min-height: 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+#hero h1 {
+  font-size: 2.8em;
+  margin: 0 0 16px 0;
+}
+
+#hero p {
+  font-size: 1.15em;
+  max-width: 680px;
+  line-height: 1.7;
+  opacity: 0.92;
+}
+
+/* Sections */
+section {
+  padding: 40px 20px;
+}
+
+section h2 {
+  color: var(--primary-dark);
+  text-align: center;
+  margin-bottom: 28px;
+  font-size: 1.8em;
+}
+
+#how-it-works {
+  background-color: var(--bg-lavender);
+}
+
+#results {
+  background-color: var(--bg-mint);
+}
+
+#testimonials {
+  background-color: var(--bg-amber);
+}
+
+#faq {
+  background-color: var(--bg-rose);
+}
+
+#contact {
+  background-color: var(--bg-lavender);
+}
+
+/* Cards */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  background: var(--bg-white);
+  border-radius: 10px;
+  box-shadow: var(--shadow-md);
+  margin: 12px;
+  padding: 24px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  flex: 1;
+  min-width: 220px;
+  border-top: 4px solid transparent;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Per-section card accents */
+#how-it-works .card {
+  border-top-color: var(--primary);
+}
+
+#results .card {
+  border-top-color: var(--accent-teal);
+}
+
+#testimonials .card {
+  border-top-color: var(--accent-amber);
+}
+
+#faq .card {
+  border-top-color: var(--accent-coral);
+}
+
+.card h3 {
+  color: var(--text-dark);
+  margin-top: 0;
+}
+
+.card p {
+  color: var(--text-medium);
+  line-height: 1.6;
+}
+
+/* Contact section */
+#contact h2 {
+  color: var(--primary-dark);
+}
+
+#contact p {
+  color: var(--text-medium);
+  text-align: center;
+}

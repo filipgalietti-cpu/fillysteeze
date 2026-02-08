@@ -407,13 +407,22 @@ if (confettiCanvas) {
         }
     }
     
-    // Create initial confetti particles
-    for (let i = 0; i < 100; i++) {
+    // Create initial confetti particles (reduced count for better performance)
+    const particleCount = window.innerWidth < 768 ? 50 : 80;
+    for (let i = 0; i < particleCount; i++) {
         confettiParticles.push(new Confetti());
     }
     
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
     // Animation loop
     function animateConfetti() {
+        // Skip animation if user prefers reduced motion
+        if (prefersReducedMotion) {
+            return;
+        }
+        
         ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
         
         confettiParticles.forEach(particle => {

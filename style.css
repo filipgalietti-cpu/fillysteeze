@@ -39,6 +39,7 @@
 
 body {
   font-family: Arial, sans-serif;
+  font-size: 1.125rem; /* 18px when browser default is 16px */
   color: var(--text-dark);
   background-color: var(--bg-page);
   margin: 0;
@@ -366,7 +367,7 @@ footer p {
 
 /* Sections */
 section {
-  padding: 40px 20px;
+  padding: 60px 20px;
 }
 
 section h2 {
@@ -444,7 +445,8 @@ section h2 {
 
 .card p {
   color: var(--text-medium);
-  line-height: 1.6;
+  line-height: 1.7;
+  max-width: 65ch;
 }
 
 /* Contact section */
@@ -455,6 +457,10 @@ section h2 {
 #contact p {
   color: var(--text-medium);
   text-align: center;
+  line-height: 1.7;
+  max-width: 75ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 .logo-wrap{
   display:inline-block;
@@ -562,6 +568,10 @@ section h2 {
 
 .process-card p {
   color: var(--text-medium);
+  line-height: 1.7;
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .step-badge {
@@ -633,6 +643,9 @@ section h2 {
   color: var(--text-medium);
   line-height: 1.7;
   font-size: 1.05em;
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card-icon {
@@ -937,13 +950,15 @@ section h2 {
 
 .info-card p {
   color: var(--text-medium);
-  line-height: 1.8;
+  line-height: 1.7;
+  max-width: 75ch;
   margin-bottom: 16px;
 }
 
 .info-card ul {
   color: var(--text-medium);
-  line-height: 1.8;
+  line-height: 1.7;
+  max-width: 75ch;
   margin-left: 20px;
   margin-bottom: 16px;
 }

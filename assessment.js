@@ -221,10 +221,8 @@ function calculateRecommendation(type) {
         recommendedPlan = 'recommended';
     }
     
-    // Store recommendation in sessionStorage and redirect
-    sessionStorage.setItem('recommendedPlan', recommendedPlan);
-    sessionStorage.setItem('userType', type);
-    window.location.href = 'results.html';
+    // Show loading animation
+    showLoadingAnimation(recommendedPlan, type);
 }
 
 // Auto-advance on option selection
@@ -243,3 +241,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Show loading animation with step progression
+function showLoadingAnimation(recommendedPlan, userType) {
+    const overlay = document.getElementById('loading-overlay');
+    overlay.classList.add('active');
+    
+    // Animate steps with delays
+    const steps = [
+        { id: 'step-1', delay: 600 },
+        { id: 'step-2', delay: 1400 },
+        { id: 'step-3', delay: 2200 },
+        { id: 'step-4', delay: 3000 }
+    ];
+    
+    steps.forEach(step => {
+        setTimeout(() => {
+            const stepElement = document.getElementById(step.id);
+            stepElement.classList.add('active');
+            
+            // Mark previous steps as complete
+            const stepNumber = parseInt(step.id.split('-')[1]);
+            if (stepNumber > 1) {
+                document.getElementById(`step-${stepNumber - 1}`).classList.add('complete');
+            }
+        }, step.delay);
+    });
+    
+    // Navigate to results after all steps complete
+    setTimeout(() => {
+        sessionStorage.setItem('recommendedPlan', recommendedPlan);
+        sessionStorage.setItem('userType', userType);
+        window.location.href = 'results.html';
+    }, 3800);
+}

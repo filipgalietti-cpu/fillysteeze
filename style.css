@@ -85,7 +85,7 @@ header {
 }
 
 .header-logo {
-  max-height: 72px;
+  max-height: 100px;
   width: auto;
   height: auto;
   display: block;
@@ -221,7 +221,7 @@ header {
 /* Mobile responsive logo sizing */
 @media (max-width: 768px) {
   .header-logo {
-    max-height: 56px;
+    max-height: 76px;
     margin: 4px 0;
   }
   
@@ -232,7 +232,7 @@ header {
 
 @media (max-width: 480px) {
   .header-logo {
-    max-height: 48px;
+    max-height: 64px;
     margin: 2px 0;
   }
   

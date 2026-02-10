@@ -45,7 +45,7 @@ function showRecommendationMessage(plan, userType) {
             child: 'A great way to start your reading journey! This plan has everything you need to practice and improve at your own pace.'
         },
         recommended: {
-            adult: 'The ideal balance of features and value. You get comprehensive tracking, adaptive lessons, and dedicated support—everything most families and teachers need to see real results.',
+            adult: 'Strikes the perfect balance between capability and affordability. Comprehensive tracking, adaptive lessons, and dedicated support give you everything needed to achieve real results.',
             child: 'This is our most popular plan! You\'ll get fun lessons, cool rewards, and tools to help you become an awesome reader!'
         },
         premium: {

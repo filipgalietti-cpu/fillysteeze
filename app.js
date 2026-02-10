@@ -159,10 +159,10 @@ if (intakeForm) {
             isValid = false;
         }
         
-        // If form is valid, redirect to thank you page
+        // If form is valid, show success message and redirect to thank you page
         // Note: This is a static demo. In production, form data should be submitted to a backend before redirecting.
         if (isValid) {
-            window.location.href = 'thankyou.html';
+            showIntakeSuccessMessage();
         }
     });
 }
@@ -187,6 +187,19 @@ function showSuccessMessage() {
         submitButton.style.background = '';
         submitButton.disabled = false;
     }, 3000);
+}
+
+function showIntakeSuccessMessage() {
+    const submitButton = document.querySelector('.submit-button');
+    
+    submitButton.textContent = '✓ Your responses were saved';
+    submitButton.style.background = getComputedStyle(document.documentElement).getPropertyValue('--success').trim();
+    submitButton.disabled = true;
+    
+    // Redirect to thank you page after showing success message
+    setTimeout(() => {
+        window.location.href = 'thankyou.html';
+    }, 1500);
 }
 
 // ===== SCROLL ANIMATIONS =====

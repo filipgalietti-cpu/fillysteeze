@@ -1123,6 +1123,8 @@ section h2 {
 
 .home-button:active {
   transform: translateY(0);
+}
+
 /* What Happens Next Section */
 #what-happens-next {
   background: var(--bg-white);

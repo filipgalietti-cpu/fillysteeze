@@ -900,6 +900,142 @@ section h2 {
   background: var(--bg-page);
 }
 
+/* What Happens Next Section */
+#what-happens-next {
+  background: var(--bg-white);
+  padding: 80px 20px;
+}
+
+#what-happens-next .container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#what-happens-next h2 {
+  color: var(--primary-dark);
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+.next-steps-timeline {
+  margin-bottom: 60px;
+}
+
+.timeline-step {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  padding: 30px;
+  background: var(--bg-lavender);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.timeline-step:hover {
+  transform: translateX(10px);
+  box-shadow: var(--shadow-md);
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  background: var(--primary-gradient);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-right: 25px;
+  box-shadow: var(--shadow-sm);
+}
+
+.step-content h3 {
+  color: var(--primary-dark);
+  margin: 0 0 10px 0;
+  font-size: 1.4em;
+  font-weight: 600;
+}
+
+.step-content p {
+  color: var(--text-medium);
+  margin: 0;
+  line-height: 1.7;
+  font-size: 1.05em;
+}
+
+.primary-cta-container {
+  text-align: center;
+  margin-top: 50px;
+  padding: 40px 20px;
+  background: var(--bg-lavender);
+  border-radius: 16px;
+}
+
+.primary-cta-button {
+  display: inline-block;
+  padding: 18px 48px;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: white;
+  background: var(--primary-gradient);
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.primary-cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(79, 70, 229, 0.4);
+}
+
+.cta-subtitle {
+  margin-top: 15px;
+  color: var(--text-medium);
+  font-size: 1em;
+  font-style: italic;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .timeline-step {
+    padding: 20px;
+  }
+  
+  .step-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+    margin-right: 15px;
+  }
+  
+  .step-content h3 {
+    font-size: 1.2em;
+  }
+  
+  .step-content p {
+    font-size: 1em;
+  }
+  
+  #what-happens-next h2 {
+    font-size: 2em;
+  }
+  
+  .primary-cta-button {
+    padding: 15px 35px;
+    font-size: 1.1em;
+  }
+}
+
 /* Information Pages */
 #info-content {
   background: var(--bg-page);

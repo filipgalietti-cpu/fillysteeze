@@ -479,7 +479,7 @@ section h2 {
 
 /* Add spacing between consecutive paragraphs in cards */
 .card p + p {
-  margin-top: 12px;
+  margin-top: 16px;
 }
 
 /* Contact section */

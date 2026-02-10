@@ -249,10 +249,10 @@ function showLoadingAnimation(recommendedPlan, userType) {
     
     // Animate steps with delays
     const steps = [
-        { id: 'step-1', delay: 600 },
-        { id: 'step-2', delay: 1400 },
-        { id: 'step-3', delay: 2200 },
-        { id: 'step-4', delay: 3000 }
+        { id: 'step-1', delay: 800 },
+        { id: 'step-2', delay: 1800 },
+        { id: 'step-3', delay: 2800 },
+        { id: 'step-4', delay: 3800 }
     ];
     
     steps.forEach(step => {
@@ -273,5 +273,5 @@ function showLoadingAnimation(recommendedPlan, userType) {
         sessionStorage.setItem('recommendedPlan', recommendedPlan);
         sessionStorage.setItem('userType', userType);
         window.location.href = 'results.html';
-    }, 3800);
+    }, 4800);
 }

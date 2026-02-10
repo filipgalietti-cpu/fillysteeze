@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-Minute Assessment - READEE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+       <div class="header-container">
+           <a href="index.html" class="logo-link">
+               <img src="readee-logo.png" alt="READEE logo" class="header-logo">
+           </a>
+           <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">
+               <span class="menu-text">Menu</span>
+               <span class="hamburger-icon">
+                   <span></span>
+                   <span></span>
+                   <span></span>
+               </span>
+           </button>
+       </div>
+       <nav id="navMenu" class="nav-menu">
+           <a href="index.html">Home</a>
+           <a href="standards.html">ELA Standards</a>
+           <a href="assessment.html">Get Started</a>
+       </nav>
+    </header>
+    
+    <div id="questionnaire-hero">
+        <h1>Find Your Perfect READEE Plan</h1>
+        <p>Take our quick 2-minute assessment to get a personalized recommendation</p>
+    </div>
+
+    <section id="assessment-container" class="container">
+        <!-- Step 1: Choose User Type -->
+        <div id="step-user-type" class="assessment-step active">
+            <div class="form-container">
+                <h2>Who is taking this assessment?</h2>
+                <p class="step-description">This helps us tailor the questions to your needs</p>
+                
+                <div class="user-type-buttons">
+                    <button class="user-type-btn" data-type="adult" onclick="selectUserType('adult')">
+                        <div class="user-icon">👨‍🏫</div>
+                        <h3>Adult</h3>
+                        <p>Parent, Teacher, or Administrator</p>
+                    </button>
+                    
+                    <button class="user-type-btn" data-type="child" onclick="selectUserType('child')">
+                        <div class="user-icon">👧</div>
+                        <h3>Student</h3>
+                        <p>I'm a student taking this myself</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Adult Questions -->
+        <div id="step-adult-questions" class="assessment-step">
+            <div class="form-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="adult-progress"></div>
+                </div>
+                <p class="progress-text"><span id="adult-current">1</span> of <span id="adult-total">6</span></p>
+                
+                <form id="adult-form">
+                    <!-- Question 1 -->
+                    <div class="question-slide active" data-question="1">
+                        <h2>What is your role?</h2>
+                        <div class="question-options">
+                            <label class="option-card">
+                                <input type="radio" name="role" value="parent" required>
+                                <span class="option-content">
+                                    <span class="option-icon">👨‍👩‍👧</span>
+                                    <span class="option-text">Parent/Guardian</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="role" value="teacher" required>
+                                <span class="option-content">
+                                    <span class="option-icon">👩‍🏫</span>
+                                    <span class="option-text">Teacher</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="role" value="administrator" required>
+                                <span class="option-content">
+                                    <span class="option-icon">👔</span>
+                                    <span class="option-text">School Administrator</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="question-slide" data-question="2">
+                        <h2>How many students will use READEE?</h2>
+                        <div class="question-options">
+                            <label class="option-card">
+                                <input type="radio" name="students" value="1-3" required>
+                                <span class="option-content">
+                                    <span class="option-icon">👤</span>
+                                    <span class="option-text">1-3 students</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="students" value="4-10" required>
+                                <span class="option-content">
+                                    <span class="option-icon">👥</span>
+                                    <span class="option-text">4-10 students</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="students" value="11-25" required>
+                                <span class="option-content">
+                                    <span class="option-icon">👨‍👩‍👧‍👦</span>
+                                    <span class="option-text">11-25 students (Classroom)</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="students" value="26+" required>
+                                <span class="option-content">
+                                    <span class="option-icon">🏫</span>
+                                    <span class="option-text">26+ students (Multiple Classes)</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="question-slide" data-question="3">
+                        <h2>What is your primary goal?</h2>
+                        <div class="question-options">
+                            <label class="option-card">
+                                <input type="radio" name="goal" value="basics" required>
+                                <span class="option-content">
+                                    <span class="option-icon">📖</span>
+                                    <span class="option-text">Build basic reading skills</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="goal" value="comprehension" required>
+                                <span class="option-content">
+                                    <span class="option-icon">🧠</span>
+                                    <span class="option-text">Improve comprehension</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="goal" value="advanced" required>
+                                <span class="option-content">
+                                    <span class="option-icon">⭐</span>
+                                    <span class="option-text">Advanced reading & analysis</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="goal" value="support" required>
+                                <span class="option-content">
+                                    <span class="option-icon">🤝</span>
+                                    <span class="option-text">Support struggling readers</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="question-slide" data-question="4">
+                        <h2>What level of support do you need?</h2>
+                        <div class="question-options">
+                            <label class="option-card">
+                                <input type="radio" name="support" value="self-paced" required>
+                                <span class="option-content">
+                                    <span class="option-icon">🚶</span>
+                                    <span class="option-text">Self-paced learning</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="support" value="standard" required>
+                                <span class="option-content">
+                                    <span class="option-icon">📊</span>
+                                    <span class="option-text">Progress tracking & reports</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="support" value="premium" required>
+                                <span class="option-content">
+                                    <span class="option-icon">🎯</span>
+                                    <span class="option-text">Personalized coaching & analytics</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="question-slide" data-question="5">
+                        <h2>Do you need special accommodations?</h2>
+                        <div class="question-options">
+                            <label class="option-card">
+                                <input type="radio" name="accommodations" value="none" required>
+                                <span class="option-content">
+                                    <span class="option-icon">✅</span>
+                                    <span class="option-text">No special needs</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="accommodations" value="ell" required>
+                                <span class="option-content">
+                                    <span class="option-icon">🌍</span>
+                                    <span class="option-text">English Language Learners</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="accommodations" value="special-needs" required>
+                                <span class="option-content">
+                                    <span class="option-icon">♿</span>
+                                    <span class="option-text">Learning disabilities/Special needs</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="accommodations" value="both" required>
+                                <span class="option-content">
+                                    <span class="option-icon">🤲</span>
+                                    <span class="option-text">Both ELL & Special needs</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="question-slide" data-question="6">
+                        <h2>What's your budget priority?</h2>
+                        <div class="question-options">
+                            <label class="option-card">
+                                <input type="radio" name="budget" value="cost-effective" required>
+                                <span class="option-content">
+                                    <span class="option-icon">💰</span>
+                                    <span class="option-text">Most cost-effective</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="budget" value="balanced" required>
+                                <span class="option-content">
+                                    <span class="option-icon">⚖️</span>
+                                    <span class="option-text">Balance of features & cost</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="budget" value="premium" required>
+                                <span class="option-content">
+                                    <span class="option-icon">🏆</span>
+                                    <span class="option-text">Best possible features</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="navigation-buttons">
+                        <button type="button" class="nav-btn back-btn" onclick="prevQuestion('adult')" style="display: none;">← Back</button>
+                        <button type="button" class="nav-btn next-btn" onclick="nextQuestion('adult')">Next →</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Step 3: Child Questions -->
+        <div id="step-child-questions" class="assessment-step">
+            <div class="form-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="child-progress"></div>
+                </div>
+                <p class="progress-text"><span id="child-current">1</span> of <span id="child-total">4</span></p>
+                
+                <form id="child-form">
+                    <!-- Question 1 -->
+                    <div class="question-slide active" data-question="1">
+                        <h2>What grade are you in?</h2>
+                        <div class="question-options">
+                            <label class="option-card">
+                                <input type="radio" name="grade" value="pre-k" required>
+                                <span class="option-content">
+                                    <span class="option-icon">🌱</span>
+                                    <span class="option-text">Pre-K</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="grade" value="k" required>
+                                <span class="option-content">
+                                    <span class="option-icon">🎨</span>
+                                    <span class="option-text">Kindergarten</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="grade" value="1-2" required>
+                                <span class="option-content">
+                                    <span class="option-icon">📚</span>
+                                    <span class="option-text">1st or 2nd Grade</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="grade" value="3+" required>
+                                <span class="option-content">
+                                    <span class="option-icon">📖</span>
+                                    <span class="option-text">3rd Grade or Higher</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="question-slide" data-question="2">
+                        <h2>How do you feel about reading?</h2>
+                        <div class="question-options">
+                            <label class="option-card">
+                                <input type="radio" name="feeling" value="love" required>
+                                <span class="option-content">
+                                    <span class="option-icon">😍</span>
+                                    <span class="option-text">I love reading!</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="feeling" value="okay" required>
+                                <span class="option-content">
+                                    <span class="option-icon">🙂</span>
+                                    <span class="option-text">It's okay</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="feeling" value="hard" required>
+                                <span class="option-content">
+                                    <span class="option-icon">😓</span>
+                                    <span class="option-text">It's hard for me</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="question-slide" data-question="3">
+                        <h2>What would make reading more fun?</h2>
+                        <div class="question-options">
+                            <label class="option-card">
+                                <input type="radio" name="fun" value="games" required>
+                                <span class="option-content">
+                                    <span class="option-icon">🎮</span>
+                                    <span class="option-text">Games & Activities</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="fun" value="stories" required>
+                                <span class="option-content">
+                                    <span class="option-icon">📕</span>
+                                    <span class="option-text">Exciting Stories</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="fun" value="rewards" required>
+                                <span class="option-content">
+                                    <span class="option-icon">🏅</span>
+                                    <span class="option-text">Rewards & Achievements</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="question-slide" data-question="4">
+                        <h2>How often do you want to practice?</h2>
+                        <div class="question-options">
+                            <label class="option-card">
+                                <input type="radio" name="frequency" value="daily" required>
+                                <span class="option-content">
+                                    <span class="option-icon">⏰</span>
+                                    <span class="option-text">Every day (10 minutes)</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="frequency" value="few-times" required>
+                                <span class="option-content">
+                                    <span class="option-icon">📅</span>
+                                    <span class="option-text">A few times a week</span>
+                                </span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="frequency" value="flexible" required>
+                                <span class="option-content">
+                                    <span class="option-icon">🌟</span>
+                                    <span class="option-text">Whenever I can</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="navigation-buttons">
+                        <button type="button" class="nav-btn back-btn" onclick="prevQuestion('child')" style="display: none;">← Back</button>
+                        <button type="button" class="nav-btn next-btn" onclick="nextQuestion('child')">Next →</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 READEE. Building stronger readers.</p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="assessment.js"></script>
+</body>
+</html>

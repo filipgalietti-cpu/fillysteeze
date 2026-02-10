@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Perfect Plan - READEE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+       <div class="header-container">
+           <a href="index.html" class="logo-link">
+               <img src="readee-logo.png" alt="READEE logo" class="header-logo">
+           </a>
+           <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">
+               <span class="menu-text">Menu</span>
+               <span class="hamburger-icon">
+                   <span></span>
+                   <span></span>
+                   <span></span>
+               </span>
+           </button>
+       </div>
+       <nav id="navMenu" class="nav-menu">
+           <a href="index.html">Home</a>
+           <a href="standards.html">ELA Standards</a>
+           <a href="assessment.html">Get Started</a>
+       </nav>
+    </header>
+    
+    <div id="results-hero">
+        <h1>Your Perfect READEE Plan</h1>
+        <p id="results-subtitle">Based on your answers, we've found the ideal plan for you!</p>
+    </div>
+
+    <section id="results-container" class="container">
+        <div id="recommendation-highlight" class="recommendation-banner">
+            <div class="banner-icon">🎯</div>
+            <div class="banner-content">
+                <h2>We Recommend: <span id="recommended-plan-name"></span></h2>
+                <p id="recommendation-reason"></p>
+            </div>
+        </div>
+
+        <div class="pricing-section">
+            <h2>Choose Your Plan</h2>
+            <p class="pricing-subtitle">All plans include access to our proven reading curriculum • Cancel anytime</p>
+            
+            <div class="pricing-cards">
+                <!-- Lite Plan -->
+                <div class="pricing-card" id="plan-lite">
+                    <div class="plan-header">
+                        <h3>Lite</h3>
+                        <p class="plan-tagline">Perfect for Getting Started</p>
+                    </div>
+                    <div class="plan-price">
+                        <span class="currency">$</span>
+                        <span class="amount">19</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="plan-features">
+                        <li><span class="checkmark">✓</span> 1-3 student accounts</li>
+                        <li><span class="checkmark">✓</span> Core reading curriculum</li>
+                        <li><span class="checkmark">✓</span> 10-minute daily lessons</li>
+                        <li><span class="checkmark">✓</span> Basic progress tracking</li>
+                        <li><span class="checkmark">✓</span> Access to reading library</li>
+                        <li class="feature-unavailable"><span class="crossmark">✗</span> Advanced analytics</li>
+                        <li class="feature-unavailable"><span class="crossmark">✗</span> Personalized coaching</li>
+                        <li class="feature-unavailable"><span class="crossmark">✗</span> Custom learning paths</li>
+                    </ul>
+                    <button class="plan-button" onclick="selectPlan('lite')">Get Started</button>
+                </div>
+
+                <!-- Recommended Plan -->
+                <div class="pricing-card featured" id="plan-recommended">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <div class="plan-header">
+                        <h3>Recommended</h3>
+                        <p class="plan-tagline">Best Value for Families & Teachers</p>
+                    </div>
+                    <div class="plan-price">
+                        <span class="currency">$</span>
+                        <span class="amount">39</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <div class="savings-badge">Save 49% vs Premium</div>
+                    <ul class="plan-features">
+                        <li><span class="checkmark">✓</span> Up to 10 student accounts</li>
+                        <li><span class="checkmark">✓</span> Complete reading curriculum</li>
+                        <li><span class="checkmark">✓</span> Adaptive lesson difficulty</li>
+                        <li><span class="checkmark">✓</span> Detailed progress reports</li>
+                        <li><span class="checkmark">✓</span> Full reading & activity library</li>
+                        <li><span class="checkmark">✓</span> Parent/teacher dashboard</li>
+                        <li><span class="checkmark">✓</span> Email support</li>
+                        <li><span class="checkmark">✓</span> Custom learning goals</li>
+                    </ul>
+                    <button class="plan-button featured" onclick="selectPlan('recommended')">Start Free Trial</button>
+                    <p class="trial-text">14-day free trial • No credit card required</p>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="pricing-card" id="plan-premium">
+                    <div class="plan-header">
+                        <h3>Premium</h3>
+                        <p class="plan-tagline">Complete Solution for Schools</p>
+                    </div>
+                    <div class="plan-price">
+                        <span class="currency">$</span>
+                        <span class="amount">77</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="plan-features">
+                        <li><span class="checkmark">✓</span> Unlimited student accounts</li>
+                        <li><span class="checkmark">✓</span> Full curriculum + extensions</li>
+                        <li><span class="checkmark">✓</span> AI-powered personalization</li>
+                        <li><span class="checkmark">✓</span> Advanced analytics & insights</li>
+                        <li><span class="checkmark">✓</span> Priority support & coaching</li>
+                        <li><span class="checkmark">✓</span> Dedicated success manager</li>
+                        <li><span class="checkmark">✓</span> Custom learning paths</li>
+                        <li><span class="checkmark">✓</span> Special needs accommodations</li>
+                        <li><span class="checkmark">✓</span> ELL support tools</li>
+                        <li><span class="checkmark">✓</span> Professional development</li>
+                        <li><span class="checkmark">✓</span> Integration with school systems</li>
+                    </ul>
+                    <button class="plan-button" onclick="selectPlan('premium')">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-section">
+            <h2>Plan Comparison</h2>
+            <div class="comparison-table-container">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Lite</th>
+                            <th class="featured-col">Recommended</th>
+                            <th>Premium</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Student Accounts</td>
+                            <td>1-3</td>
+                            <td class="featured-col">Up to 10</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Reading Curriculum</td>
+                            <td>Core</td>
+                            <td class="featured-col">Complete</td>
+                            <td>Complete + Extensions</td>
+                        </tr>
+                        <tr>
+                            <td>Progress Tracking</td>
+                            <td>Basic</td>
+                            <td class="featured-col">Detailed Reports</td>
+                            <td>Advanced Analytics</td>
+                        </tr>
+                        <tr>
+                            <td>Adaptive Learning</td>
+                            <td>—</td>
+                            <td class="featured-col">✓</td>
+                            <td>AI-Powered</td>
+                        </tr>
+                        <tr>
+                            <td>Support</td>
+                            <td>Self-service</td>
+                            <td class="featured-col">Email Support</td>
+                            <td>Priority + Coaching</td>
+                        </tr>
+                        <tr>
+                            <td>Custom Learning Paths</td>
+                            <td>—</td>
+                            <td class="featured-col">✓</td>
+                            <td>✓</td>
+                        </tr>
+                        <tr>
+                            <td>Special Accommodations</td>
+                            <td>—</td>
+                            <td class="featured-col">—</td>
+                            <td>✓</td>
+                        </tr>
+                        <tr>
+                            <td>Success Manager</td>
+                            <td>—</td>
+                            <td class="featured-col">—</td>
+                            <td>✓</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item-simple">
+                    <h3>Can I change plans later?</h3>
+                    <p>Absolutely! You can upgrade or downgrade your plan at any time. Changes take effect at the start of your next billing cycle.</p>
+                </div>
+                <div class="faq-item-simple">
+                    <h3>Is there a free trial?</h3>
+                    <p>Yes! The Recommended plan includes a 14-day free trial with no credit card required. Try it risk-free!</p>
+                </div>
+                <div class="faq-item-simple">
+                    <h3>What ages does READEE support?</h3>
+                    <p>READEE is designed for children ages 4-10 (Pre-K through 3rd grade), with content aligned to early literacy standards.</p>
+                </div>
+                <div class="faq-item-simple">
+                    <h3>Do you offer discounts for schools?</h3>
+                    <p>Yes! Contact our sales team for custom pricing for multiple classrooms or district-wide implementations.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Ready to Build Stronger Readers?</h2>
+            <p>Join thousands of families and educators using READEE</p>
+            <button class="cta-button" onclick="selectPlan('trial')">Start Your Free Trial</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 READEE. Building stronger readers.</p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="results.js"></script>
+</body>
+</html>

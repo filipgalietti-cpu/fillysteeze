@@ -12,6 +12,7 @@ on:
 # Sets permissions of the GITHUB_TOKEN
 permissions:
   contents: read
+  issues: write
 
 jobs:
   link-check:

@@ -417,6 +417,65 @@ body {
   padding-left: 12px;
 }
 
+/* Login Button in Mobile Nav */
+.mobile-nav-login {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 16px 16px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 1.05rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(106, 90, 205, 0.25);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.mobile-nav-login:hover {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(106, 90, 205, 0.35);
+}
+
+.mobile-nav-login:active {
+  background: var(--primary-dark);
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(106, 90, 205, 0.3);
+}
+
+.mobile-nav-login:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  background: var(--primary-dark);
+}
+
+.mobile-nav-login .login-icon {
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+}
+
+.mobile-nav-login .login-text {
+  flex: 1;
+  text-align: left;
+  margin-left: 12px;
+}
+
+.mobile-nav-login .login-arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+  opacity: 0.9;
+}
+
+.mobile-nav-login:hover .login-arrow {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
 /* Hide mobile nav on desktop */
 @media (min-width: 1024px) {
   .mobile-nav {

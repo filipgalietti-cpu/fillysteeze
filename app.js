@@ -28,39 +28,14 @@ if (menuToggle && navMenu) {
 }
 
 // ===== DESKTOP DROPDOWN NAVIGATION =====
+// Prevent default behavior on dropdown toggle links
 const dropdowns = document.querySelectorAll('.desktop-nav .dropdown');
 
 dropdowns.forEach(dropdown => {
-    const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-    
-    if (dropdownMenu) {
-        // Prevent default behavior on dropdown toggle links
-        const toggleLink = dropdown.querySelector('.nav-link');
-        if (toggleLink) {
-            toggleLink.addEventListener('click', (e) => {
-                e.preventDefault();
-            });
-        }
-        
-        // Close dropdown when clicking a menu item
-        const dropdownLinks = dropdownMenu.querySelectorAll('.dropdown-item');
-        dropdownLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                // Dropdown will close automatically on navigation
-            });
-        });
-    }
-});
-
-// Close dropdowns when clicking outside
-document.addEventListener('click', (e) => {
-    const isDropdown = e.target.closest('.dropdown');
-    if (!isDropdown) {
-        dropdowns.forEach(dropdown => {
-            const menu = dropdown.querySelector('.dropdown-menu');
-            if (menu && menu.style.display === 'block') {
-                menu.style.display = 'none';
-            }
+    const toggleLink = dropdown.querySelector('.nav-link');
+    if (toggleLink) {
+        toggleLink.addEventListener('click', (e) => {
+            e.preventDefault();
         });
     }
 });

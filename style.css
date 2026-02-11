@@ -190,7 +190,6 @@ body {
 
 /* Dropdown Menu */
 .dropdown-menu {
-  display: none;
   position: absolute;
   top: calc(100% + 8px);
   left: 0;
@@ -201,15 +200,18 @@ body {
   padding: 8px;
   z-index: 100;
   opacity: 0;
+  visibility: hidden;
   transform: translateY(-10px);
-  transition: all 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
   border: 1px solid rgba(0, 0, 0, 0.06);
+  pointer-events: none;
 }
 
 .dropdown:hover .dropdown-menu {
-  display: block;
   opacity: 1;
+  visibility: visible;
   transform: translateY(0);
+  pointer-events: auto;
 }
 
 .dropdown-item {

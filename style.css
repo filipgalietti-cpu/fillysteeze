@@ -382,8 +382,8 @@ footer {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin: 0 0 16px 0;
-  color: #fff;
-  opacity: 0.6;
+  color: var(--primary-light);
+  opacity: 1;
 }
 
 .footer-section ul {

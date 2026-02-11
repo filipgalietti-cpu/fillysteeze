@@ -90,8 +90,26 @@ fillysteeze/
 ## Getting Started (Development)
 
 1. Clone the repository
-2. Open `index.html` in a web browser
-3. No build process required - it's a static website
+2. Install dependencies: `npm install`
+3. Open `index.html` in a web browser
+4. No build process required - it's a static website
+
+### Code Quality Tools
+
+This project uses Prettier and ESLint to maintain code quality and consistency.
+
+#### Available Scripts
+
+- **`npm run format`** - Auto-format all HTML, CSS, JS, JSON, and Markdown files
+- **`npm run format:check`** - Check if files are formatted correctly (useful for CI/CD)
+- **`npm run lint`** - Lint JavaScript files for code quality issues
+
+#### Configuration Files
+
+- **`package.json`**: Contains project dependencies and npm scripts
+- **`.prettierrc`**: Prettier configuration for code formatting (2-space indentation, semicolons, double quotes)
+- **`.prettierignore`**: Files and directories to exclude from formatting
+- **`eslint.config.js`**: ESLint configuration for JavaScript linting (browser environment, ES2022)
 
 ## Contributing
 

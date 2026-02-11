@@ -204,14 +204,12 @@ body {
   transform: translateY(-10px);
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  pointer-events: none;
 }
 
 .dropdown:hover .dropdown-menu {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
-  pointer-events: auto;
 }
 
 .dropdown-item {

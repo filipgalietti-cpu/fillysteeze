@@ -15,11 +15,13 @@ READEE complements—never replaces—classroom instruction, providing short, fu
 ## Who is READEE For?
 
 ### Primary Audience
+
 - **Parents** of K-2 students looking to supplement classroom learning
 - **Teachers** seeking additional resources to support early readers
 - **Schools** interested in evidence-based literacy programs
 
 ### Educational Focus
+
 - Kindergarten through 2nd grade students
 - Aligned with Pennsylvania ELA (English Language Arts) standards
 - Supports students who need additional reading practice
@@ -29,6 +31,7 @@ READEE complements—never replaces—classroom instruction, providing short, fu
 **Prototype/MVP** - This is an early-stage website showcasing the READEE literacy program concept.
 
 ### What's Working
+
 - ✅ Informational landing page explaining the program
 - ✅ Multi-page site structure with responsive design
 - ✅ "Get Started" questionnaire for interest collection
@@ -36,6 +39,7 @@ READEE complements—never replaces—classroom instruction, providing short, fu
 - ✅ Mobile-friendly navigation
 
 ### What's In Development
+
 - 🚧 Backend integration for form submissions
 - 🚧 Actual lesson content and interactive exercises
 - 🚧 Student progress tracking
@@ -118,10 +122,12 @@ This project uses Lighthouse CI to audit the live GitHub Pages site for performa
 #### Automated Audits
 
 Lighthouse CI runs automatically:
+
 - On every pull request to the `main` branch
 - Via manual trigger from the GitHub Actions tab
 
 The audits test the live production site at `https://filipgalietti-cpu.github.io/readee-site/` and will warn (but not fail) if scores drop below the following thresholds:
+
 - **Performance**: 80%
 - **Accessibility**: 90%
 - **Best Practices**: 80%
@@ -132,11 +138,13 @@ The audits test the live production site at `https://filipgalietti-cpu.github.io
 To run a Lighthouse audit manually on your local machine:
 
 1. **Install Lighthouse CI globally:**
+
    ```bash
    npm install -g @lhci/cli
    ```
 
 2. **Run the audit:**
+
    ```bash
    lhci autorun
    ```
@@ -173,7 +181,7 @@ This is an early-stage project. If you're interested in contributing or learning
 
 ## License
 
-*To be determined*
+_To be determined_
 
 ## Contact
 

@@ -441,6 +441,12 @@ body {
   box-shadow: 0 6px 16px rgba(106, 90, 205, 0.35);
 }
 
+.mobile-nav-login:active {
+  background: var(--primary-dark);
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(106, 90, 205, 0.3);
+}
+
 .mobile-nav-login:focus {
   outline: 2px solid var(--primary);
   outline-offset: 2px;

@@ -3,7 +3,8 @@ const menuToggle = document.getElementById('menuToggle');
 const navMenu = document.getElementById('navMenu');
 
 if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', () => {
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         menuToggle.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
@@ -25,6 +26,19 @@ if (menuToggle && navMenu) {
         }
     });
 }
+
+// ===== DESKTOP DROPDOWN NAVIGATION =====
+// Prevent default behavior on dropdown toggle links
+const dropdowns = document.querySelectorAll('.desktop-nav .dropdown');
+
+dropdowns.forEach(dropdown => {
+    const toggleLink = dropdown.querySelector('.nav-link');
+    if (toggleLink) {
+        toggleLink.addEventListener('click', (e) => {
+            e.preventDefault();
+        });
+    }
+});
 
 // ===== SMOOTH SCROLLING =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

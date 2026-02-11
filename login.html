@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who's Using Readee? - READEE</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Role Router Specific Styles */
+        .role-router-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .role-router-headline {
+            text-align: center;
+            font-size: 2.5em;
+            color: var(--text-dark);
+            margin-bottom: 48px;
+            font-weight: 700;
+        }
+
+        .role-buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .role-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 32px 28px;
+            background: white;
+            border: 3px solid var(--primary);
+            border-radius: 16px;
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .role-button:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .role-button:focus {
+            outline: 3px solid var(--primary-dark);
+            outline-offset: 4px;
+        }
+
+        .role-button-icon {
+            font-size: 2em;
+            margin-right: 16px;
+        }
+
+        .role-button-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .role-button-arrow {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .role-button:hover .role-button-arrow {
+            transform: translateX(8px);
+        }
+
+        /* Email signup form (hidden by default) */
+        .email-signup-container {
+            display: none;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 32px;
+            background: var(--bg-lavender);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .email-signup-container.visible {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .email-signup-container h3 {
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .email-signup-container p {
+            color: var(--text-medium);
+            margin-bottom: 24px;
+            font-size: 0.95em;
+        }
+
+        .email-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .email-input {
+            padding: 14px 16px;
+            font-size: 1em;
+            border: 2px solid var(--primary-light);
+            border-radius: 8px;
+            transition: border-color 0.2s ease;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .email-submit-btn {
+            padding: 14px 32px;
+            font-size: 1em;
+            font-weight: 600;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .email-submit-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .email-skip-btn {
+            display: block;
+            margin-top: 12px;
+            color: var(--text-medium);
+            text-decoration: underline;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 0.9em;
+        }
+
+        .email-skip-btn:hover {
+            color: var(--text-dark);
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .role-router-headline {
+                font-size: 2em;
+                margin-bottom: 32px;
+            }
+
+            .role-button {
+                padding: 24px 20px;
+                font-size: 1.25em;
+            }
+
+            .role-button-icon {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .role-router-headline {
+                font-size: 1.6em;
+            }
+
+            .role-button {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px 16px;
+                font-size: 1.1em;
+            }
+
+            .role-button-icon {
+                margin-bottom: 8px;
+            }
+
+            .role-button-arrow {
+                position: absolute;
+                right: 16px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .role-button:hover .role-button-arrow {
+                transform: translateY(-50%) translateX(8px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+       <div class="header-container">
+           <a href="index.html" class="logo-link">
+               <img src="assets/readee-logo.png" alt="READEE logo" class="header-logo">
+           </a>
+           
+           <!-- Desktop Navigation -->
+           <nav class="desktop-nav">
+               <div class="nav-item dropdown">
+                   <a href="#" class="nav-link">Programs <span class="dropdown-arrow">▾</span></a>
+                   <div class="dropdown-menu">
+                       <a href="index.html#why-readee" class="dropdown-item">Why Readee?</a>
+                       <a href="index.html#how-it-works" class="dropdown-item">How It Works</a>
+                       <a href="engaging-effective.html" class="dropdown-item">Engaging & Effective</a>
+                   </div>
+               </div>
+               
+               <div class="nav-item dropdown">
+                   <a href="#" class="nav-link">For Educators <span class="dropdown-arrow">▾</span></a>
+                   <div class="dropdown-menu">
+                       <a href="supporting-classroom.html" class="dropdown-item">Classroom Support</a>
+                       <a href="standards.html" class="dropdown-item">ELA Standards</a>
+                       <a href="assessment.html" class="dropdown-item">Assessment Tools</a>
+                   </div>
+               </div>
+               
+               <div class="nav-item dropdown">
+                   <a href="#" class="nav-link">Resources <span class="dropdown-arrow">▾</span></a>
+                   <div class="dropdown-menu">
+                       <a href="index.html#readee-process" class="dropdown-item">Reading Process</a>
+                       <a href="standards.html" class="dropdown-item">Learning Standards</a>
+                   </div>
+               </div>
+               
+               <div class="nav-item">
+                   <a href="nonprofit-literacy.html" class="nav-link">About</a>
+               </div>
+               
+               <div class="nav-item">
+                   <a href="index.html#get-started" class="nav-link">Success Stories</a>
+               </div>
+               
+               <div class="nav-item">
+                   <a href="questionnaire.html" class="nav-link-cta">Get Started</a>
+               </div>
+           </nav>
+           
+           <!-- Mobile Menu Toggle -->
+           <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">
+               <span class="menu-text">Menu</span>
+               <span class="hamburger-icon">
+                   <span></span>
+                   <span></span>
+                   <span></span>
+               </span>
+           </button>
+       </div>
+       
+       <!-- Mobile Navigation -->
+       <nav id="navMenu" class="mobile-nav">
+           <div class="mobile-nav-section">
+               <div class="mobile-nav-header">Programs</div>
+               <a href="index.html#why-readee" class="mobile-nav-link">Why Readee?</a>
+               <a href="index.html#how-it-works" class="mobile-nav-link">How It Works</a>
+               <a href="engaging-effective.html" class="mobile-nav-link">Engaging & Effective</a>
+           </div>
+           
+           <div class="mobile-nav-section">
+               <div class="mobile-nav-header">For Educators</div>
+               <a href="supporting-classroom.html" class="mobile-nav-link">Classroom Support</a>
+               <a href="standards.html" class="mobile-nav-link">ELA Standards</a>
+               <a href="assessment.html" class="mobile-nav-link">Assessment Tools</a>
+           </div>
+           
+           <div class="mobile-nav-section">
+               <div class="mobile-nav-header">Resources</div>
+               <a href="index.html#readee-process" class="mobile-nav-link">Reading Process</a>
+               <a href="standards.html" class="mobile-nav-link">Learning Standards</a>
+           </div>
+           
+           <a href="nonprofit-literacy.html" class="mobile-nav-link">About</a>
+           <a href="index.html#get-started" class="mobile-nav-link">Success Stories</a>
+           <a href="questionnaire.html" class="mobile-nav-link mobile-nav-cta">Get Started</a>
+       </nav>
+    </header>
+
+    <main>
+        <div class="role-router-container">
+            <h1 class="role-router-headline">Who's using Readee?</h1>
+            
+            <div class="role-buttons-container">
+                <button class="role-button" onclick="selectRole('child')" aria-label="I'm a Child">
+                    <span class="role-button-icon">👶</span>
+                    <span class="role-button-text">I'm a Child</span>
+                    <span class="role-button-arrow">→</span>
+                </button>
+                
+                <button class="role-button" onclick="selectRole('parent')" aria-label="I'm a Parent">
+                    <span class="role-button-icon">👨‍👩‍👧</span>
+                    <span class="role-button-text">I'm a Parent</span>
+                    <span class="role-button-arrow">→</span>
+                </button>
+                
+                <button class="role-button" onclick="selectRole('teacher')" aria-label="I'm a Teacher">
+                    <span class="role-button-icon">👩‍🏫</span>
+                    <span class="role-button-text">I'm a Teacher</span>
+                    <span class="role-button-arrow">→</span>
+                </button>
+            </div>
+
+            <!-- Email signup form for parents/teachers -->
+            <div id="emailSignup" class="email-signup-container">
+                <h3>Stay Connected</h3>
+                <p id="signupMessage">Get updates and tips for supporting your child's reading journey.</p>
+                <form id="emailForm" onsubmit="handleEmailSubmit(event)">
+                    <div class="email-input-group">
+                        <input 
+                            type="email" 
+                            id="emailInput" 
+                            class="email-input" 
+                            placeholder="Enter your email (optional)"
+                            aria-label="Email address"
+                        >
+                    </div>
+                    <button type="submit" class="email-submit-btn">Continue</button>
+                    <button type="button" class="email-skip-btn" onclick="skipEmail()">Skip for now</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-grid">
+          <!-- Learning Programs -->
+          <div class="footer-section">
+            <h3>Learning Programs</h3>
+            <ul>
+              <li><a href="nonprofit-literacy.html">Reading Fundamentals</a></li>
+              <li><a href="engaging-effective.html">Phonics & Vocabulary</a></li>
+              <li><a href="supporting-classroom.html">Comprehension Skills</a></li>
+              <li><a href="standards.html">ELA Standards Alignment</a></li>
+              <li><a href="assessment.html">Student Assessment</a></li>
+              <li><a href="progress-tracking.html">Progress Tracking</a></li>
+            </ul>
+          </div>
+
+          <!-- For Educators -->
+          <div class="footer-section">
+            <h3>For Educators</h3>
+            <ul>
+              <li><a href="teacher-resources.html">Teacher Resources</a></li>
+              <li><a href="classroom-tools.html">Classroom Tools</a></li>
+              <li><a href="lesson-plans.html">Lesson Plans</a></li>
+              <li><a href="professional-development.html">Professional Development</a></li>
+              <li><a href="educator-community.html">Educator Community</a></li>
+              <li><a href="training-materials.html">Training Materials</a></li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div class="footer-section">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="get-started-guide.html">Get Started Guide</a></li>
+              <li><a href="parent-handbook.html">Parent Handbook</a></li>
+              <li><a href="activity-library.html">Activity Library</a></li>
+              <li><a href="reading-tips-blog.html">Reading Tips Blog</a></li>
+              <li><a href="success-stories.html">Success Stories</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+            </ul>
+          </div>
+
+          <!-- About READEE -->
+          <div class="footer-section">
+            <h3>About READEE</h3>
+            <ul>
+              <li><a href="our-mission.html">Our Mission</a></li>
+              <li><a href="how-it-works.html">How It Works</a></li>
+              <li><a href="research-evidence.html">Research & Evidence</a></li>
+              <li><a href="partner-schools.html">Partner Schools</a></li>
+              <li><a href="contact-us.html">Contact Us</a></li>
+              <li><a href="careers.html">Careers</a></li>
+            </ul>
+          </div>
+
+          <!-- Support -->
+          <div class="footer-section">
+            <h3>Support</h3>
+            <ul>
+              <li><a href="help-center.html">Help Center</a></li>
+              <li><a href="technical-support.html">Technical Support</a></li>
+              <li><a href="accessibility.html">Accessibility</a></li>
+              <li><a href="system-status.html">System Status</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms-of-service.html">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 READEE. Building stronger readers, one student at a time.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // Role selection and routing logic
+        let selectedRole = '';
+
+        function selectRole(role) {
+            selectedRole = role;
+            
+            // Save role to localStorage
+            localStorage.setItem('readee_user_role', role);
+            
+            if (role === 'child') {
+                // Child flow: redirect directly to app without email
+                window.location.href = 'https://filipgalietti-cpu.github.io/readee-app/';
+            } else if (role === 'parent') {
+                // Parent flow: show email signup (optional)
+                showEmailSignup('parent');
+            } else if (role === 'teacher') {
+                // Teacher flow: show email signup (optional)
+                showEmailSignup('teacher');
+            }
+        }
+
+        function showEmailSignup(role) {
+            const signupContainer = document.getElementById('emailSignup');
+            const signupMessage = document.getElementById('signupMessage');
+            
+            // Update message based on role
+            if (role === 'parent') {
+                signupMessage.textContent = 'Get updates and tips for supporting your child\'s reading journey.';
+            } else if (role === 'teacher') {
+                signupMessage.textContent = 'Get updates on classroom resources and professional development opportunities.';
+            }
+            
+            // Show the signup form with animation
+            signupContainer.classList.add('visible');
+            
+            // Scroll to the form
+            setTimeout(() => {
+                signupContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+        }
+
+        function handleEmailSubmit(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('emailInput').value;
+            
+            // Save email if provided (optional)
+            if (email) {
+                localStorage.setItem('readee_user_email', email);
+                console.log('Email saved:', email);
+            }
+            
+            // Navigate based on role
+            navigateByRole();
+        }
+
+        function skipEmail() {
+            navigateByRole();
+        }
+
+        function navigateByRole() {
+            if (selectedRole === 'parent') {
+                // Scroll to parent info section on contact page
+                window.location.href = 'contact-us.html#parent-info';
+            } else if (selectedRole === 'teacher') {
+                // Scroll to teacher info section on contact page
+                window.location.href = 'contact-us.html#teacher-info';
+            }
+        }
+
+        // Check if user already has a role saved
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedRole = localStorage.getItem('readee_user_role');
+            if (savedRole) {
+                console.log('Previously saved role:', savedRole);
+            }
+        });
+    </script>
+</body>
+</html>

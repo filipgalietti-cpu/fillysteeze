@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+dist/
+build/
+
+# Logs
+*.log
+nohup.out
+
+# Version control
+.git/
+.github/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Data files (potentially large or auto-generated)
+data/

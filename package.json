@@ -1,0 +1,23 @@
+{
+  "name": "readee-site",
+  "version": "1.0.0",
+  "description": "Static HTML/CSS/JS site for Readee",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "format": "prettier --write \"**/*.{html,css,js,json,md}\"",
+    "format:check": "prettier --check \"**/*.{html,css,js,json,md}\"",
+    "lint": "eslint \"**/*.js\""
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0"
+  },
+  "keywords": [
+    "readee",
+    "education",
+    "literacy"
+  ],
+  "author": "",
+  "license": "ISC"
+}

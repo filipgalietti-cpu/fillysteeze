@@ -1,263 +1,1297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>READEE - Helping Young Readers Build Strong Reading Skills</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>READEE — Helping Young Readers Build Strong Reading Skills</title>
+  <meta name="description" content="Help young readers build strong reading skills in just 10 minutes a day. Short, engaging lessons for ages 4–10." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       RESET & VARIABLES
+       ═══════════════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --coral: #FF6B6B;
+      --coral-dark: #E85D5D;
+      --sky: #74C0FC;
+      --sky-dark: #4DABF7;
+      --mint: #69DB7C;
+      --mint-dark: #51CF66;
+      --sun: #FFD43B;
+      --sun-dark: #FCC419;
+      --lavender: #B197FC;
+      --cream: #FFF9F0;
+      --cream-dark: #F5EDE0;
+      --bark: #2C1810;
+      --bark-light: #5A4032;
+      --sand: #7A6B5D;
+      --font-display: 'Baloo 2', cursive;
+      --font-body: 'Nunito', sans-serif;
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 32px;
+      --radius-xl: 48px;
+      --shadow-soft: 0 4px 24px rgba(44, 24, 16, 0.06);
+      --shadow-md: 0 8px 32px rgba(44, 24, 16, 0.1);
+      --shadow-lg: 0 16px 48px rgba(44, 24, 16, 0.12);
+      --transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--bark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; border: none; font-family: inherit; }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANIMATIONS
+       ═══════════════════════════════════════════════════════════ */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(2deg); }
+    }
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(-1.5deg); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes slideLeft {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-3deg); }
+      75% { transform: rotate(3deg); }
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 1; }
+      100% { transform: scale(1.3); opacity: 0; }
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes grain {
+      0%, 100% { transform: translate(0, 0); }
+      10% { transform: translate(-2%, -2%); }
+      20% { transform: translate(1%, 3%); }
+      30% { transform: translate(-3%, 1%); }
+      40% { transform: translate(3%, -1%); }
+      50% { transform: translate(-1%, 2%); }
+      60% { transform: translate(2%, -3%); }
+      70% { transform: translate(-2%, 1%); }
+      80% { transform: translate(1%, -2%); }
+      90% { transform: translate(-1%, 3%); }
+    }
+
+    .fade-in { animation: fadeUp 0.7s ease both; }
+    .fade-in-d1 { animation-delay: 0.1s; }
+    .fade-in-d2 { animation-delay: 0.2s; }
+    .fade-in-d3 { animation-delay: 0.3s; }
+    .fade-in-d4 { animation-delay: 0.4s; }
+
+    /* ═══════════════════════════════════════════════════════════
+       GRAIN OVERLAY
+       ═══════════════════════════════════════════════════════════ */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      animation: grain 8s steps(10) infinite;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       LAYOUT
+       ═══════════════════════════════════════════════════════════ */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 16px 0;
+      transition: all 0.4s ease;
+      background: transparent;
+    }
+    .nav.scrolled {
+      background: rgba(255, 249, 240, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 2px 24px rgba(44, 24, 16, 0.06);
+      padding: 10px 0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--bark);
+    }
+    .header-logo {
+      height: 42px;
+      width: auto;
+      object-fit: contain;
+      transition: opacity 0.2s ease;
+    }
+    .header-logo:hover { opacity: 0.85; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+    .nav-links a {
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--bark-light);
+      transition: all 0.25s ease;
+    }
+    .nav-links a:hover {
+      background: rgba(44, 24, 16, 0.05);
+      color: var(--bark);
+    }
+    .nav-cta {
+      background: var(--bark) !important;
+      color: white !important;
+      padding: 10px 24px !important;
+      font-weight: 700 !important;
+      box-shadow: 0 4px 16px rgba(44, 24, 16, 0.2);
+      transition: all 0.25s ease !important;
+    }
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(44, 24, 16, 0.25) !important;
+      background: var(--bark-light) !important;
+    }
+    .nav-login {
+      background: transparent !important;
+      border: 2px solid var(--bark) !important;
+      color: var(--bark) !important;
+      padding: 8px 20px !important;
+      font-weight: 700 !important;
+    }
+    .nav-login:hover {
+      background: var(--bark) !important;
+      color: white !important;
+    }
+
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      background: none;
+      width: 36px;
+      height: 36px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2.5px;
+      background: var(--bark);
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(255, 107, 107, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      left: -150px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(116, 192, 252, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: white;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--coral);
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero-badge .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--mint);
+      border-radius: 50%;
+      position: relative;
+    }
+    .hero-badge .dot::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid var(--mint);
+      animation: pulse-ring 1.5s ease infinite;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--bark);
+      margin-bottom: 20px;
+      animation: fadeUp 0.7s ease both 0.1s;
+    }
+    .hero h1 .highlight {
+      position: relative;
+      display: inline-block;
+    }
+    .hero h1 .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: -4px;
+      right: -4px;
+      height: 14px;
+      background: var(--sun);
+      opacity: 0.35;
+      border-radius: 4px;
+      z-index: -1;
+      transform: rotate(-1deg);
+    }
+    .hero-sub {
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      color: var(--sand);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 36px;
+      font-weight: 500;
+      animation: fadeUp 0.7s ease both 0.2s;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s ease both 0.3s;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+      color: white;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      border-radius: 50px;
+      box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
+      transition: all var(--transition);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(255, 107, 107, 0.4);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 28px;
+      background: white;
+      color: var(--bark);
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      border-radius: 50px;
+      box-shadow: var(--shadow-soft);
+      transition: all var(--transition);
+    }
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Hero illustration */
+    .hero-visual {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-illustration {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+    }
+    .hero-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      animation: scaleIn 0.8s ease both 0.2s;
+    }
+    .hero-card-mascot {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, var(--sky), var(--sky-dark));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      animation: float 4s ease-in-out infinite;
+      box-shadow: 0 8px 32px rgba(116, 192, 252, 0.3);
+    }
+    .hero-card h3 {
+      font-family: var(--font-display);
+      text-align: center;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+      color: var(--bark);
+    }
+    .hero-card-progress {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .progress-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--sand);
+      min-width: 80px;
+    }
+    .progress-bar {
+      flex: 1;
+      height: 10px;
+      background: var(--cream);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 10px;
+      transition: width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .fill-coral { background: linear-gradient(90deg, var(--coral), var(--sun)); }
+    .fill-sky { background: linear-gradient(90deg, var(--sky), var(--mint)); }
+    .fill-mint { background: linear-gradient(90deg, var(--mint), var(--sun)); }
+
+    /* Floating elements around hero card */
+    .float-badge {
+      position: absolute;
+      background: white;
+      border-radius: 16px;
+      padding: 12px 18px;
+      box-shadow: var(--shadow-md);
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 3;
+    }
+    .float-badge-1 {
+      top: -10px;
+      right: -20px;
+      animation: floatSlow 5s ease-in-out infinite;
+    }
+    .float-badge-2 {
+      bottom: 30px;
+      left: -30px;
+      animation: floatSlow 5s ease-in-out infinite 1s;
+    }
+    .float-badge-emoji {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MARQUEE / TRUST STRIP
+       ═══════════════════════════════════════════════════════════ */
+    .trust-strip {
+      padding: 32px 0;
+      border-top: 1px solid rgba(44, 24, 16, 0.06);
+      border-bottom: 1px solid rgba(44, 24, 16, 0.06);
+      overflow: hidden;
+      position: relative;
+    }
+    .trust-strip::before, .trust-strip::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+      z-index: 2;
+    }
+    .trust-strip::before { left: 0; background: linear-gradient(90deg, var(--cream), transparent); }
+    .trust-strip::after { right: 0; background: linear-gradient(270deg, var(--cream), transparent); }
+    .marquee-track {
+      display: flex;
+      animation: marquee 30s linear infinite;
+      width: fit-content;
+    }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 40px;
+      white-space: nowrap;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--sand);
+    }
+    .marquee-item span {
+      font-size: 1.4rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       WHY READEE CARDS
+       ═══════════════════════════════════════════════════════════ */
+    .section { padding: 100px 0; }
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .section-tag {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .tag-coral { background: rgba(255, 107, 107, 0.1); color: var(--coral); }
+    .tag-sky { background: rgba(116, 192, 252, 0.1); color: var(--sky-dark); }
+    .tag-mint { background: rgba(105, 219, 124, 0.1); color: var(--mint-dark); }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--bark);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .why-card {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s ease;
+      box-shadow: var(--shadow-soft);
+    }
+    .why-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    .why-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+    .why-card:nth-child(1)::before { background: linear-gradient(90deg, var(--coral), var(--sun)); }
+    .why-card:nth-child(2)::before { background: linear-gradient(90deg, var(--sky), var(--lavender)); }
+    .why-card:nth-child(3)::before { background: linear-gradient(90deg, var(--mint), var(--sky)); }
+    .why-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .why-icon-1 { background: rgba(255, 107, 107, 0.1); }
+    .why-icon-2 { background: rgba(116, 192, 252, 0.1); }
+    .why-icon-3 { background: rgba(105, 219, 124, 0.1); }
+    .why-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .why-card p {
+      color: var(--sand);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    .why-card .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--coral);
+      transition: gap 0.25s ease;
+    }
+    .why-card:hover .card-link { gap: 10px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       HOW IT WORKS — STEPS
+       ═══════════════════════════════════════════════════════════ */
+    .steps-section {
+      background: white;
+      border-radius: 0;
+      position: relative;
+    }
+    .steps-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(44,24,16,0.08), transparent);
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      position: relative;
+    }
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 50px;
+      left: 20%;
+      right: 20%;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, var(--cream-dark) 0, var(--cream-dark) 8px, transparent 8px, transparent 16px);
+    }
+    .step-item { text-align: center; position: relative; z-index: 2; }
+    .step-number {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: white;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+    .step-1 .step-number { background: linear-gradient(135deg, var(--coral), var(--sun)); }
+    .step-2 .step-number { background: linear-gradient(135deg, var(--sky), var(--lavender)); }
+    .step-3 .step-number { background: linear-gradient(135deg, var(--mint), var(--sky)); }
+    .step-item h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .step-item p {
+      color: var(--sand);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 280px;
+      margin: 0 auto 12px;
+    }
+    .step-result {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: var(--cream);
+    }
+    .step-1 .step-result { color: var(--coral); }
+    .step-2 .step-result { color: var(--sky-dark); }
+    .step-3 .step-result { color: var(--mint-dark); }
+
+    /* ═══════════════════════════════════════════════════════════
+       STATS BANNER
+       ═══════════════════════════════════════════════════════════ */
+    .stats-banner {
+      background: linear-gradient(135deg, var(--bark), var(--bark-light));
+      border-radius: var(--radius-lg);
+      padding: 56px 48px;
+      margin: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .stats-banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 107, 107, 0.15), transparent 70%);
+      border-radius: 50%;
+    }
+    .stat-item { text-align: center; position: relative; z-index: 2; }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: white;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 600;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TESTIMONIAL
+       ═══════════════════════════════════════════════════════════ */
+    .testimonial-section { position: relative; }
+    .testimonial-card {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .testimonial-stars {
+      font-size: 1.4rem;
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+    }
+    .testimonial-quote {
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-weight: 600;
+      line-height: 1.6;
+      color: var(--bark);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--bark);
+    }
+    .testimonial-role {
+      font-size: 0.9rem;
+      color: var(--sand);
+      margin-top: 4px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       CTA
+       ═══════════════════════════════════════════════════════════ */
+    .cta-section {
+      padding: 80px 0 100px;
+    }
+    .cta-card {
+      background: linear-gradient(135deg, var(--coral), #FF8787);
+      border-radius: var(--radius-lg);
+      padding: 72px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-card::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%);
+      border-radius: 50%;
+    }
+    .cta-card::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      right: -80px;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+      border-radius: 50%;
+    }
+    .cta-card h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 2;
+    }
+    .cta-card p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.1rem;
+      max-width: 480px;
+      margin: 0 auto 32px;
+      position: relative;
+      z-index: 2;
+      font-weight: 500;
+    }
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 18px 36px;
+      background: white;
+      color: var(--coral);
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 50px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: all var(--transition);
+      position: relative;
+      z-index: 2;
+    }
+    .btn-white:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════════ */
+    .footer {
+      background: white;
+      padding: 64px 0 32px;
+      border-top: 1px solid rgba(44, 24, 16, 0.06);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand p {
+      color: var(--sand);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      max-width: 280px;
+      margin-top: 12px;
+    }
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--bark);
+    }
+    .footer-col a {
+      display: block;
+      padding: 4px 0;
+      color: var(--sand);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+    .footer-col a:hover { color: var(--coral); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 24px;
+      border-top: 1px solid rgba(44, 24, 16, 0.06);
+      font-size: 0.85rem;
+      color: var(--sand);
+    }
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-bottom-links a {
+      color: var(--sand);
+      transition: color 0.2s ease;
+    }
+    .footer-bottom-links a:hover { color: var(--coral); }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 968px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { margin-top: 40px; }
+      .hero-illustration { max-width: 380px; margin: 0 auto; }
+      .float-badge-1 { right: -10px; }
+      .float-badge-2 { left: -10px; }
+      .why-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+      .steps-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .steps-grid::before { display: none; }
+      .stats-banner { grid-template-columns: repeat(2, 1fr); margin: 0 16px; padding: 40px 24px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 100px 0 60px; min-height: auto; }
+      .stats-banner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .cta-card { padding: 48px 24px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    /* Mobile nav open state */
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--cream);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--bark);
+      padding: 12px 24px;
+    }
+    .nav-mobile .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 2rem;
+      background: none;
+      color: var(--bark);
+    }
+  </style>
 </head>
 <body>
-    <header class="site-header">
-       <div class="header-container">
-           <a href="index.html" class="logo-link">
-               <img src="assets/readee-logo.png" alt="READEE logo" class="header-logo">
-           </a>
-           
-           <!-- Desktop Navigation -->
-           <nav class="desktop-nav">
-               <div class="nav-item dropdown">
-                   <a href="#" class="nav-link">Programs <span class="dropdown-arrow">▾</span></a>
-                   <div class="dropdown-menu">
-                       <a href="#why-readee" class="dropdown-item">Why Readee?</a>
-                       <a href="#how-it-works" class="dropdown-item">How It Works</a>
-                       <a href="engaging-effective.html" class="dropdown-item">Engaging & Effective</a>
-                   </div>
-               </div>
-               
-               <div class="nav-item dropdown">
-                   <a href="#" class="nav-link">For Educators <span class="dropdown-arrow">▾</span></a>
-                   <div class="dropdown-menu">
-                       <a href="supporting-classroom.html" class="dropdown-item">Classroom Support</a>
-                       <a href="standards.html" class="dropdown-item">ELA Standards</a>
-                       <a href="assessment.html" class="dropdown-item">Assessment Tools</a>
-                   </div>
-               </div>
-               
-               <div class="nav-item dropdown">
-                   <a href="#" class="nav-link">Resources <span class="dropdown-arrow">▾</span></a>
-                   <div class="dropdown-menu">
-                       <a href="#readee-process" class="dropdown-item">Reading Process</a>
-                       <a href="standards.html" class="dropdown-item">Learning Standards</a>
-                   </div>
-               </div>
-               
-               <div class="nav-item">
-                   <a href="nonprofit-literacy.html" class="nav-link">About</a>
-               </div>
-               
-               <div class="nav-item">
-                   <a href="#get-started" class="nav-link">Success Stories</a>
-               </div>
-               
-               <div class="nav-item">
-                   <a href="questionnaire.html" class="nav-link-cta">Get Started</a>
-               </div>
-           </nav>
-           
-           <!-- Mobile Menu Toggle -->
-           <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">
-               <span class="menu-text">Menu</span>
-               <span class="hamburger-icon">
-                   <span></span>
-                   <span></span>
-                   <span></span>
-               </span>
-           </button>
-       </div>
-       
-       <!-- Mobile Navigation -->
-       <nav id="navMenu" class="mobile-nav">
-           <a href="login.html" class="mobile-nav-link mobile-nav-login">
-               <span class="login-icon">🔐</span>
-               <span class="login-text">Login to App</span>
-               <span class="login-arrow">→</span>
-           </a>
-           
-           <div class="mobile-nav-section">
-               <div class="mobile-nav-header">Programs</div>
-               <a href="#why-readee" class="mobile-nav-link">Why Readee?</a>
-               <a href="#how-it-works" class="mobile-nav-link">How It Works</a>
-               <a href="engaging-effective.html" class="mobile-nav-link">Engaging & Effective</a>
-           </div>
-           
-           <div class="mobile-nav-section">
-               <div class="mobile-nav-header">For Educators</div>
-               <a href="supporting-classroom.html" class="mobile-nav-link">Classroom Support</a>
-               <a href="standards.html" class="mobile-nav-link">ELA Standards</a>
-               <a href="assessment.html" class="mobile-nav-link">Assessment Tools</a>
-           </div>
-           
-           <div class="mobile-nav-section">
-               <div class="mobile-nav-header">Resources</div>
-               <a href="#readee-process" class="mobile-nav-link">Reading Process</a>
-               <a href="standards.html" class="mobile-nav-link">Learning Standards</a>
-           </div>
-           
-           <a href="nonprofit-literacy.html" class="mobile-nav-link">About</a>
-           <a href="#get-started" class="mobile-nav-link">Success Stories</a>
-           <a href="questionnaire.html" class="mobile-nav-link mobile-nav-cta">Get Started</a>
-       </nav>
-    </header>
-    <div id="hero">
 
-  <div class="lava-lamp" aria-hidden="true">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-    <div class="blob blob-4"></div>
-  </div>
-        <h1>Help young readers build strong reading skills in just 10 minutes a day.</h1>
-  <p>Short, engaging lessons that support classroom instruction for ages 4–10.</p>
-  <a href="assessment.html" class="get-started-button">
-    Take the 2-minute assessment
-  </a>
+  <!-- ════════════ NAVIGATION ════════════ -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/readee-logo.png" alt="READEE logo" class="header-logo" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="#why-readee">Why Readee</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="engaging-effective.html">Programs</a></li>
+        <li><a href="nonprofit-literacy.html">About</a></li>
+        <li><a href="login.html" class="nav-login">Log In</a></li>
+        <li><a href="assessment.html" class="nav-cta">Get Started</a></li>
+      </ul>
+      <button class="nav-toggle" onclick="toggleMobile()" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  <section id="about">
+  </nav>
+
+  <!-- Mobile nav -->
+  <div class="nav-mobile" id="mobileNav">
+    <button class="close-btn" onclick="toggleMobile()" aria-label="Close menu">&times;</button>
+    <a href="#why-readee" onclick="toggleMobile()">Why Readee</a>
+    <a href="#how-it-works" onclick="toggleMobile()">How It Works</a>
+    <a href="engaging-effective.html">Programs</a>
+    <a href="nonprofit-literacy.html">About</a>
+    <a href="login.html">Log In</a>
+    <a href="assessment.html">Get Started →</a>
+  </div>
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="hero">
     <div class="container">
-      <h2 id="why-readee">Why Readee?</h2>
-      <div class="row">
-        <a href="nonprofit-literacy.html" class="about-card-link">
-          <div class="card about-card">
-            <div class="card-icon">📚</div>
-            <h3>Nonprofit Literacy Program</h3>
-            <p>
-              We work alongside schools and teachers to strengthen early reading
-            </p>
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="dot"></span>
+            Nonprofit literacy program for ages 4–10
           </div>
-        </a>
-        
-        <a href="engaging-effective.html" class="about-card-link">
-          <div class="card about-card">
-            <div class="card-icon">✨</div>
-            <h3>Engaging & Effective</h3>
-            <p>
-              Short, fun lessons with guided practice in phonics, vocabulary, and comprehension
-            </p>
+          <h1>
+            Build <span class="highlight">strong readers</span> in just
+            <span class="highlight">10 minutes</span> a day
+          </h1>
+          <p class="hero-sub">
+            Short, engaging lessons that support classroom instruction — 
+            building phonics, vocabulary, and comprehension skills your child needs.
+          </p>
+          <div class="hero-actions">
+            <a href="assessment.html" class="btn-primary">
+              Take the Assessment →
+            </a>
+            <a href="#how-it-works" class="btn-secondary">
+              See How It Works
+            </a>
           </div>
-        </a>
-        
-        <a href="supporting-classroom.html" class="about-card-link">
-          <div class="card about-card">
-            <div class="card-icon">🤝</div>
-            <h3>Supporting Classroom Learning</h3>
-            <p>
-              We complement—never replace—your child's classroom instruction
-            </p>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-illustration">
+            <div class="hero-card">
+              <div class="hero-card-mascot">📚</div>
+              <h3>Today's Progress</h3>
+              <div class="hero-card-progress">
+                <div class="progress-row">
+                  <span class="progress-label">Phonics</span>
+                  <div class="progress-bar"><div class="progress-fill fill-coral" style="width: 0%" data-width="85%"></div></div>
+                </div>
+                <div class="progress-row">
+                  <span class="progress-label">Vocabulary</span>
+                  <div class="progress-bar"><div class="progress-fill fill-sky" style="width: 0%" data-width="72%"></div></div>
+                </div>
+                <div class="progress-row">
+                  <span class="progress-label">Reading</span>
+                  <div class="progress-bar"><div class="progress-fill fill-mint" style="width: 0%" data-width="90%"></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="float-badge float-badge-1">
+              <div class="float-badge-emoji" style="background: rgba(105,219,124,0.1);">⭐</div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--sand);">Streak</div>
+                <div style="color: var(--bark);">7 days!</div>
+              </div>
+            </div>
+            <div class="float-badge float-badge-2">
+              <div class="float-badge-emoji" style="background: rgba(255,107,107,0.1);">🎯</div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--sand);">Level</div>
+                <div style="color: var(--bark);">Explorer</div>
+              </div>
+            </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ TRUST STRIP ════════════ -->
+  <section class="trust-strip">
+    <div class="marquee-track">
+      <div class="marquee-item"><span>📖</span> Evidence-based curriculum</div>
+      <div class="marquee-item"><span>🏫</span> Supporting 200+ classrooms</div>
+      <div class="marquee-item"><span>⏱️</span> Just 10 minutes a day</div>
+      <div class="marquee-item"><span>🎯</span> ELA standards aligned</div>
+      <div class="marquee-item"><span>❤️</span> 100% nonprofit</div>
+      <div class="marquee-item"><span>👨‍🏫</span> Teacher approved</div>
+      <div class="marquee-item"><span>📊</span> Progress tracking built in</div>
+      <div class="marquee-item"><span>🌟</span> Ages 4–10</div>
+      <!-- Duplicate for seamless scroll -->
+      <div class="marquee-item"><span>📖</span> Evidence-based curriculum</div>
+      <div class="marquee-item"><span>🏫</span> Supporting 200+ classrooms</div>
+      <div class="marquee-item"><span>⏱️</span> Just 10 minutes a day</div>
+      <div class="marquee-item"><span>🎯</span> ELA standards aligned</div>
+      <div class="marquee-item"><span>❤️</span> 100% nonprofit</div>
+      <div class="marquee-item"><span>👨‍🏫</span> Teacher approved</div>
+      <div class="marquee-item"><span>📊</span> Progress tracking built in</div>
+      <div class="marquee-item"><span>🌟</span> Ages 4–10</div>
+    </div>
+  </section>
+
+  <!-- ════════════ WHY READEE ════════════ -->
+  <section class="section" id="why-readee">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag tag-coral">Why Readee?</span>
+        <h2 class="section-title">Everything your young reader needs to thrive</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon why-icon-1">📚</div>
+          <h3>Nonprofit Literacy Program</h3>
+          <p>We work alongside schools and teachers to strengthen early reading — never replacing classroom instruction, always supporting it.</p>
+          <a href="nonprofit-literacy.html" class="card-link">Learn more →</a>
+        </div>
+        <div class="why-card">
+          <div class="why-icon why-icon-2">✨</div>
+          <h3>Engaging & Effective</h3>
+          <p>Short, fun lessons with guided practice in phonics, vocabulary, and comprehension that kids actually enjoy completing.</p>
+          <a href="engaging-effective.html" class="card-link">See the approach →</a>
+        </div>
+        <div class="why-card">
+          <div class="why-icon why-icon-3">🤝</div>
+          <h3>Supporting Classrooms</h3>
+          <p>We complement your child's classroom instruction with personalized practice that reinforces what they're learning at school.</p>
+          <a href="supporting-classroom.html" class="card-link">For educators →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ HOW IT WORKS ════════════ -->
+  <section class="section steps-section" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag tag-sky">The Method</span>
+        <h2 class="section-title">How READEE builds reading comprehension</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step-item step-1">
+          <div class="step-number">1</div>
+          <h3>Understand the Words</h3>
+          <p>Students learn key vocabulary and practice decoding so the text actually makes sense.</p>
+          <span class="step-result">Fewer breakdowns, smoother reading</span>
+        </div>
+        <div class="step-item step-2">
+          <div class="step-number">2</div>
+          <h3>Understand the Text</h3>
+          <p>Students track what's happening with short "micro-checks" that keep them engaged.</p>
+          <span class="step-result">Better recall of details & sequence</span>
+        </div>
+        <div class="step-item step-3">
+          <div class="step-number">3</div>
+          <h3>Think About the Meaning</h3>
+          <p>Students answer why/how questions, make connections, and explain their thinking.</p>
+          <span class="step-result">Stronger comprehension & confidence</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ STATS ════════════ -->
+  <section class="section">
+    <div class="stats-banner">
+      <div class="stat-item">
+        <div class="stat-number">10</div>
+        <div class="stat-label">Minutes a day</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">200+</div>
+        <div class="stat-label">Classrooms supported</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">K–5</div>
+        <div class="stat-label">Grade levels</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Free & nonprofit</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ TESTIMONIAL ════════════ -->
+  <section class="section testimonial-section">
+    <div class="container">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-quote">
+          "My daughter went from struggling with every page to reading her favorite books independently. 
+          Readee made it feel like a game, not homework."
+        </p>
+        <p class="testimonial-author">Sarah M.</p>
+        <p class="testimonial-role">Parent of a 2nd grader</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ CTA ════════════ -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Ready to help your child<br />become a stronger reader?</h2>
+        <p>Take our free 2-minute assessment and get a personalized reading plan today.</p>
+        <a href="assessment.html" class="btn-white">
+          Start the Free Assessment →
         </a>
       </div>
     </div>
   </section>
-  <section id="readee-process">
+
+  <!-- ════════════ FOOTER ════════════ -->
+  <footer class="footer">
     <div class="container">
-      <h2 id="how-it-works">How READEE Builds Reading Comprehension</h2>
-
-      <div class="row">
-    <div class="card process-card">
-      <div class="step-badge">Step 1</div>
-      <h3>Understand the Words</h3>
-      <p>
-        Students learn key vocabulary and practice decoding so the text actually makes sense.
-      </p>
-      <p class="result-line"><strong>Result:</strong> Fewer breakdowns, smoother reading.</p>
-    </div>
-
-    <div class="card process-card">
-      <div class="step-badge">Step 2</div>
-      <h3>Understand the Text</h3>
-      <p>
-        Students track what's happening with short "micro-checks" that keep them on the same page.
-      </p>
-      <p class="result-line"><strong>Result:</strong> Better recall of details and sequence.</p>
-    </div>
-
-    <div class="card process-card">
-      <div class="step-badge">Step 3</div>
-      <h3>Think About the Meaning</h3>
-      <p>
-        Students answer simple why/how questions, make connections, and explain their thinking.
-      </p>
-      <p class="result-line"><strong>Result:</strong> Stronger comprehension and confidence.</p>
-    </div>
-  </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-container">
-    <div class="footer-grid">
-      <!-- Learning Programs -->
-      <div class="footer-section">
-        <h3>Learning Programs</h3>
-        <ul>
-          <li><a href="nonprofit-literacy.html">Reading Fundamentals</a></li>
-          <li><a href="engaging-effective.html">Phonics & Vocabulary</a></li>
-          <li><a href="supporting-classroom.html">Comprehension Skills</a></li>
-          <li><a href="standards.html">ELA Standards Alignment</a></li>
-          <li><a href="assessment.html">Student Assessment</a></li>
-          <li><a href="progress-tracking.html">Progress Tracking</a></li>
-        </ul>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="margin-bottom: 4px;">
+            <img src="assets/readee-logo.png" alt="READEE logo" class="header-logo" />
+          </a>
+          <p>Building stronger readers, one student at a time. A nonprofit literacy program supporting classroom instruction for ages 4–10.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Programs</h4>
+          <a href="nonprofit-literacy.html">Reading Fundamentals</a>
+          <a href="engaging-effective.html">Phonics & Vocabulary</a>
+          <a href="supporting-classroom.html">Comprehension Skills</a>
+          <a href="standards.html">ELA Standards</a>
+          <a href="assessment.html">Student Assessment</a>
+        </div>
+        <div class="footer-col">
+          <h4>For Educators</h4>
+          <a href="teacher-resources.html">Teacher Resources</a>
+          <a href="classroom-tools.html">Classroom Tools</a>
+          <a href="lesson-plans.html">Lesson Plans</a>
+          <a href="professional-development.html">Professional Development</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="get-started-guide.html">Get Started Guide</a>
+          <a href="parent-handbook.html">Parent Handbook</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact-us.html">Contact Us</a>
+        </div>
       </div>
-
-      <!-- For Educators -->
-      <div class="footer-section">
-        <h3>For Educators</h3>
-        <ul>
-          <li><a href="teacher-resources.html">Teacher Resources</a></li>
-          <li><a href="classroom-tools.html">Classroom Tools</a></li>
-          <li><a href="lesson-plans.html">Lesson Plans</a></li>
-          <li><a href="professional-development.html">Professional Development</a></li>
-          <li><a href="educator-community.html">Educator Community</a></li>
-          <li><a href="training-materials.html">Training Materials</a></li>
-        </ul>
-      </div>
-
-      <!-- Resources -->
-      <div class="footer-section">
-        <h3>Resources</h3>
-        <ul>
-          <li><a href="get-started-guide.html">Get Started Guide</a></li>
-          <li><a href="parent-handbook.html">Parent Handbook</a></li>
-          <li><a href="activity-library.html">Activity Library</a></li>
-          <li><a href="reading-tips-blog.html">Reading Tips Blog</a></li>
-          <li><a href="success-stories.html">Success Stories</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-
-      <!-- About READEE -->
-      <div class="footer-section">
-        <h3>About READEE</h3>
-        <ul>
-          <li><a href="our-mission.html">Our Mission</a></li>
-          <li><a href="how-it-works.html">How It Works</a></li>
-          <li><a href="research-evidence.html">Research & Evidence</a></li>
-          <li><a href="partner-schools.html">Partner Schools</a></li>
-          <li><a href="contact-us.html">Contact Us</a></li>
-          <li><a href="careers.html">Careers</a></li>
-        </ul>
-      </div>
-
-      <!-- Support -->
-      <div class="footer-section">
-        <h3>Support</h3>
-        <ul>
-          <li><a href="help-center.html">Help Center</a></li>
-          <li><a href="technical-support.html">Technical Support</a></li>
-          <li><a href="accessibility.html">Accessibility</a></li>
-          <li><a href="system-status.html">System Status</a></li>
-          <li><a href="privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="terms-of-service.html">Terms of Service</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <span>© 2026 READEE. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+          <a href="accessibility.html">Accessibility</a>
+        </div>
       </div>
     </div>
+  </footer>
 
-    <div class="footer-bottom">
-      <p>&copy; 2026 READEE. Building stronger readers, one student at a time.</p>
-    </div>
-  </div>
-</footer>
+  <!-- ════════════ SCRIPTS ════════════ -->
+  <script>
+    // Navbar scroll effect
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
 
-<script src="app.js"></script>
+    // Mobile nav toggle
+    function toggleMobile() {
+      document.getElementById('mobileNav').classList.toggle('open');
+    }
+
+    // Animate progress bars on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const fills = entry.target.querySelectorAll('.progress-fill');
+          fills.forEach(fill => {
+            fill.style.width = fill.dataset.width;
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const heroCard = document.querySelector('.hero-card');
+    if (heroCard) observer.observe(heroCard);
+
+    // Fade in on scroll
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.why-card, .step-item, .stat-item, .testimonial-card').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = `all 0.6s ease ${i * 0.1}s`;
+      fadeObserver.observe(el);
+    });
+  </script>
 </body>
 </html>

@@ -32,6 +32,9 @@ export default [
         FileReader: "readonly",
         Blob: "readonly",
         File: "readonly",
+        getComputedStyle: "readonly",
+        IntersectionObserver: "readonly",
+        requestAnimationFrame: "readonly",
       },
     },
     rules: {
@@ -55,6 +58,6 @@ export default [
     },
   },
   {
-    ignores: ["node_modules/", "dist/", "build/", "*.min.js"],
+    ignores: ["node_modules/", "dist/", "build/", "*.min.js", "eslint.config.js"],
   },
 ];

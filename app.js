@@ -260,7 +260,6 @@ formInputs.forEach(input => {
 // ===== CONDITIONAL NUMBER OF STUDENTS FIELD =====
 const roleSelect = document.getElementById("role");
 const studentsInput = document.getElementById("students");
-const learningDisabilitiesGroup = document.getElementById("learning-disabilities-group");
 
 if (roleSelect && studentsInput) {
   roleSelect.addEventListener("change", function () {
@@ -269,37 +268,17 @@ if (roleSelect && studentsInput) {
       studentsInput.disabled = false;
       studentsInput.required = true;
       studentsInput.parentElement.querySelector("label").textContent = "Number of Students *";
-
-      // Show learning disabilities question
-      if (learningDisabilitiesGroup) {
-        learningDisabilitiesGroup.style.display = "block";
-        learningDisabilitiesGroup.querySelector("label").textContent =
-          "Does your classroom have children with learning disabilities or special needs?";
-      }
     } else if (this.value === "parent") {
-      // Disable number of students for parents
-      studentsInput.disabled = true;
+      // Enable for parents too
+      studentsInput.disabled = false;
       studentsInput.required = false;
-      studentsInput.value = "";
-      studentsInput.parentElement.querySelector("label").textContent = "Number of Students";
-
-      // Show learning disabilities question for parents
-      if (learningDisabilitiesGroup) {
-        learningDisabilitiesGroup.style.display = "block";
-        learningDisabilitiesGroup.querySelector("label").textContent =
-          "Does your child have a learning disability or special needs?";
-      }
+      studentsInput.parentElement.querySelector("label").textContent = "Number of Children (optional)";
     } else {
       // Disable and clear for other roles
       studentsInput.disabled = true;
       studentsInput.required = false;
       studentsInput.value = "";
-      studentsInput.parentElement.querySelector("label").textContent = "Number of Students";
-
-      // Hide learning disabilities question
-      if (learningDisabilitiesGroup) {
-        learningDisabilitiesGroup.style.display = "none";
-      }
+      studentsInput.parentElement.querySelector("label").textContent = "Number of Students/Children";
     }
   });
 }

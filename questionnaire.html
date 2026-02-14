@@ -100,9 +100,35 @@
     </header>
 
     <div id="questionnaire-hero">
-      <h1>Get Started with READEE</h1>
-      <p>Tell us a bit about yourself so we can help you get started!</p>
+      <h1>Join READEE - Trusted by Parents and Educators</h1>
+      <p>Share your information and we'll get you started with our evidence-based literacy program.</p>
     </div>
+
+    <!-- Trust Indicators -->
+    <section class="trust-section container">
+      <div class="trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon">🏫</div>
+          <h3>200+ Classrooms</h3>
+          <p>Supporting teachers and students nationwide</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">📖</div>
+          <h3>Evidence-Based</h3>
+          <p>Curriculum aligned with ELA standards</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">❤️</div>
+          <h3>100% Nonprofit</h3>
+          <p>Dedicated to literacy, not profit</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">👨‍🏫</div>
+          <h3>Teacher Approved</h3>
+          <p>Designed with and for educators</p>
+        </div>
+      </div>
+    </section>
 
     <section id="questionnaire-form" class="container">
       <div class="form-container">
@@ -131,19 +157,18 @@
               <option value="">-- Please select your role --</option>
               <option value="parent">Parent/Guardian</option>
               <option value="teacher">Teacher or School Administrator</option>
-              <option value="student">Student</option>
             </select>
             <span class="error-message"></span>
           </div>
 
           <div class="form-group">
-            <label for="school">School District (optional)</label>
+            <label for="school">School or District Name (optional)</label>
             <input
               type="text"
               id="school"
               name="school"
               list="school-list"
-              placeholder="Enter your school district name"
+              placeholder="Enter your school or district name"
             />
             <datalist id="school-list">
               <option value="Prefer not to answer">Prefer not to answer</option>
@@ -151,73 +176,29 @@
             </datalist>
           </div>
 
-          <div class="form-group">
-            <label for="grade">Grade Level(s) of Interest</label>
-            <select id="grade" name="grade">
-              <option value="">-- Please select --</option>
-              <option value="pre-k">Pre-K</option>
-              <option value="kindergarten">Kindergarten</option>
-              <option value="1st">1st</option>
-              <option value="2nd">2nd</option>
-              <option value="3rd">3rd</option>
-            </select>
-          </div>
-
           <div class="form-group" id="students-group">
-            <label for="students">Number of Students</label>
+            <label for="students">Number of Students/Children</label>
             <input
               type="number"
               id="students"
               name="students"
               min="1"
-              placeholder="Enter number of students"
+              placeholder="Enter number"
               disabled
             />
           </div>
 
-          <div class="form-group" id="learning-disabilities-group" style="display: none">
-            <label for="learning-disabilities"
-              >Does your classroom have children with learning disabilities or special needs?</label
-            >
-            <select id="learning-disabilities" name="learning-disabilities">
-              <option value="">-- Please select --</option>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
-
           <div class="form-group">
-            <label for="ell">English Language Learner? (ELL)</label>
-            <select id="ell" name="ell">
-              <option value="">-- Please select --</option>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="goals">What are your reading goals?</label>
+            <label for="goals">What are your literacy goals? (optional)</label>
             <textarea
               id="goals"
               name="goals"
               rows="4"
-              placeholder="Tell us what you hope to achieve with READEE..."
+              placeholder="Share what you hope to achieve with READEE..."
             ></textarea>
           </div>
 
-          <div class="form-group">
-            <label for="referral">How did you hear about READEE?</label>
-            <select id="referral" name="referral">
-              <option value="">-- Please select --</option>
-              <option value="search">Online Search</option>
-              <option value="social">Social Media</option>
-              <option value="friend">Friend/Colleague</option>
-              <option value="school">School/District</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <button type="submit" class="submit-button">Submit</button>
+          <button type="submit" class="submit-button">Get Started</button>
         </form>
       </div>
     </section>

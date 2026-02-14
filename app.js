@@ -268,7 +268,7 @@ if (roleSelect && studentsInput) {
       studentsInput.disabled = false;
       studentsInput.required = true;
       studentsInput.parentElement.querySelector("label").textContent =
-        "Number of students/children *";
+        "Number of students/children (required)";
     } else if (this.value === "parent") {
       // Enable for parents too
       studentsInput.disabled = false;

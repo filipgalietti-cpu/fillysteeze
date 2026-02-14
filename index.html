@@ -448,6 +448,39 @@
             gap: 24px;
             text-align: left;
         }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: left;
+        }
+        .benefit-card {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            transition: all 0.3s;
+        }
+        .benefit-card:hover {
+            border-color: var(--indigo-300);
+            box-shadow: 0 8px 30px rgba(99,102,241,0.08);
+            transform: translateY(-3px);
+        }
+        .benefit-icon {
+            font-size: 1.6rem;
+            margin-bottom: 14px;
+        }
+        .benefit-card h3 {
+            font-size: 1.05rem;
+            color: var(--indigo-900);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .benefit-card p {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
         .pain-card, .solution-card {
             padding: 32px;
             border-radius: var(--radius);
@@ -1070,6 +1103,7 @@
             .hero-trust { justify-content: center; }
             .hero-visual { max-width: 440px; margin: 0 auto; }
             .problem-grid { grid-template-columns: 1fr; }
+            .benefits-grid { grid-template-columns: 1fr 1fr; }
             .steps { grid-template-columns: 1fr; }
             .testimonials { grid-template-columns: 1fr; }
             .stats-inner { grid-template-columns: repeat(2, 1fr); }
@@ -1226,26 +1260,38 @@
     <section class="problem reveal" id="why-readee">
         <div class="problem-inner">
             <span class="section-label">Why Readee</span>
-            <h2>Every reader's journey is different</h2>
-            <p>Whether your child needs a little extra practice or a whole new approach, Readee meets them where they are.</p>
-            <div class="problem-grid">
-                <div class="pain-card" style="background: var(--indigo-50); border-color: var(--indigo-200);">
-                    <h3 style="color: var(--indigo-700);">💜 You're already a great parent</h3>
-                    <ul>
-                        <li style="padding-left: 0;">The fact that you're here means you care deeply about your child's reading journey</li>
-                        <li style="padding-left: 0;">Every child learns differently — and that's okay</li>
-                        <li style="padding-left: 0;">Some kids just need a little extra practice in a low-pressure space</li>
-                        <li style="padding-left: 0;">The right support at the right time can change everything</li>
-                    </ul>
+            <h2>Everything your child needs to grow as a reader</h2>
+            <p>Built by educators, backed by the Science of Reading, and designed to make practice feel like play.</p>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">📖</div>
+                    <h3>Lessons kids actually enjoy</h3>
+                    <p>Short, guided stories with built-in practice that feels like play — not homework. Kids stay engaged because they're having fun.</p>
                 </div>
-                <div class="solution-card">
-                    <h3>💡 How Readee helps</h3>
-                    <ul>
-                        <li>Short, fun lessons that feel like play — not pressure</li>
-                        <li>Builds real skills: phonics, vocabulary, comprehension</li>
-                        <li>Progress tracking so you can see growth every week</li>
-                        <li>Built by educators using the Science of Reading</li>
-                    </ul>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🧠</div>
+                    <h3>Builds real reading skills</h3>
+                    <p>Every lesson strengthens phonics, vocabulary, and comprehension — the three pillars of the Science of Reading.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h3>See your child's growth</h3>
+                    <p>Track progress week by week. Watch their confidence build as skills improve — and know exactly where they're thriving.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤝</div>
+                    <h3>Supports what school teaches</h3>
+                    <p>Readee reinforces classroom instruction with extra practice at home. It's supplemental — designed to work alongside your child's teacher.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🧩</div>
+                    <h3>Made for every learner</h3>
+                    <p>Calm design, predictable structure, and scaffolded support — built with neurodiverse learners and struggling readers in mind.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💛</div>
+                    <h3>100% free, forever</h3>
+                    <p>Readee is a nonprofit. No subscriptions, no premium tiers, no ads. Just a reading tool that works — for every family that needs it.</p>
                 </div>
             </div>
         </div>

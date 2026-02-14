@@ -98,6 +98,9 @@ faqItems.forEach(item => {
 });
 
 // ===== FORM VALIDATION =====
+const MIN_GOALS_LENGTH = 10;
+const GRADES_CHECKBOX_SELECTOR = 'input[name="grades[]"]:checked';
+
 const contactForm = document.getElementById("contactForm");
 const intakeForm = document.getElementById("intakeForm");
 
@@ -181,7 +184,7 @@ if (intakeForm) {
     }
 
     // Validate grade levels (at least one must be selected)
-    const gradeCheckboxes = document.querySelectorAll('input[name="grades[]"]:checked');
+    const gradeCheckboxes = document.querySelectorAll(GRADES_CHECKBOX_SELECTOR);
     if (gradeCheckboxes.length === 0) {
       const gradesGroup = document.getElementById("grades-group");
       if (gradesGroup) {
@@ -193,7 +196,7 @@ if (intakeForm) {
 
     // Validate goals
     const goals = document.getElementById("goals");
-    if (goals && goals.value.trim().length < 10) {
+    if (goals && goals.value.trim().length < MIN_GOALS_LENGTH) {
       showError(goals, "Please provide more details about your literacy goals");
       isValid = false;
     }

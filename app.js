@@ -267,20 +267,14 @@ if (roleSelect && studentsInput) {
       // Enable the number of students field for teachers/administrators
       studentsInput.disabled = false;
       studentsInput.required = true;
-      studentsInput.parentElement.querySelector("label").textContent = "Number of Students *";
+      studentsInput.parentElement.querySelector("label").textContent =
+        "Number of students/children *";
     } else if (this.value === "parent") {
       // Enable for parents too
       studentsInput.disabled = false;
       studentsInput.required = false;
       studentsInput.parentElement.querySelector("label").textContent =
         "Number of students/children (optional)";
-    } else {
-      // Disable and clear for other roles
-      studentsInput.disabled = true;
-      studentsInput.required = false;
-      studentsInput.value = "";
-      studentsInput.parentElement.querySelector("label").textContent =
-        "Number of students/children";
     }
   });
 }

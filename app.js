@@ -98,6 +98,9 @@ faqItems.forEach(item => {
 });
 
 // ===== FORM VALIDATION =====
+const MIN_GOALS_LENGTH = 10;
+const GRADES_CHECKBOX_SELECTOR = 'input[name="grades[]"]:checked';
+
 const contactForm = document.getElementById("contactForm");
 const intakeForm = document.getElementById("intakeForm");
 
@@ -170,6 +173,31 @@ if (intakeForm) {
     const role = document.getElementById("role");
     if (role.value === "") {
       showError(role, "Please select your role");
+      isValid = false;
+    }
+
+    // Validate number of children
+    const children = document.getElementById("children");
+    if (children && (!children.value || children.value < 1)) {
+      showError(children, "Please enter the number of children/students");
+      isValid = false;
+    }
+
+    // Validate grade levels (at least one must be selected)
+    const gradeCheckboxes = document.querySelectorAll(GRADES_CHECKBOX_SELECTOR);
+    if (gradeCheckboxes.length === 0) {
+      const gradesGroup = document.getElementById("grades-group");
+      if (gradesGroup) {
+        const errorMessage = gradesGroup.querySelector(".error-message");
+        errorMessage.textContent = "Please select at least one grade level";
+        isValid = false;
+      }
+    }
+
+    // Validate goals
+    const goals = document.getElementById("goals");
+    if (goals && goals.value.trim().length < MIN_GOALS_LENGTH) {
+      showError(goals, "Please provide more details about your literacy goals");
       isValid = false;
     }
 
@@ -256,28 +284,6 @@ formInputs.forEach(input => {
     input.style.borderColor = "";
   });
 });
-
-// ===== CONDITIONAL NUMBER OF STUDENTS FIELD =====
-const roleSelect = document.getElementById("role");
-const studentsInput = document.getElementById("students");
-
-if (roleSelect && studentsInput) {
-  roleSelect.addEventListener("change", function () {
-    if (this.value === "teacher") {
-      // Enable the number of students field for teachers/administrators
-      studentsInput.disabled = false;
-      studentsInput.required = true;
-      studentsInput.parentElement.querySelector("label").textContent =
-        "Number of students/children (required)";
-    } else if (this.value === "parent") {
-      // Enable for parents too
-      studentsInput.disabled = false;
-      studentsInput.required = false;
-      studentsInput.parentElement.querySelector("label").textContent =
-        "Number of students/children (optional)";
-    }
-  });
-}
 
 // ===== LOAD SCHOOL NAMES FROM CSV =====
 const schoolList = document.getElementById("school-list");

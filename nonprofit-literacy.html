@@ -7,97 +7,36 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="header-container">
-        <a href="index.html" class="logo-link">
+    <!-- ════════════ NAVIGATION ════════════ -->
+    <nav class="nav" id="navbar">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
           <img src="assets/readee-logo.png" alt="READEE logo" class="header-logo" />
         </a>
-
-        <!-- Desktop Navigation -->
-        <nav class="desktop-nav">
-          <div class="nav-item dropdown">
-            <a href="#" class="nav-link">Programs <span class="dropdown-arrow">▾</span></a>
-            <div class="dropdown-menu">
-              <a href="index.html#why-readee" class="dropdown-item">Why Readee?</a>
-              <a href="index.html#how-it-works" class="dropdown-item">How It Works</a>
-              <a href="engaging-effective.html" class="dropdown-item">Engaging & Effective</a>
-            </div>
-          </div>
-
-          <div class="nav-item dropdown">
-            <a href="#" class="nav-link">For Educators <span class="dropdown-arrow">▾</span></a>
-            <div class="dropdown-menu">
-              <a href="supporting-classroom.html" class="dropdown-item">Classroom Support</a>
-              <a href="standards.html" class="dropdown-item">ELA Standards</a>
-              <a href="assessment.html" class="dropdown-item">Assessment Tools</a>
-            </div>
-          </div>
-
-          <div class="nav-item dropdown">
-            <a href="#" class="nav-link">Resources <span class="dropdown-arrow">▾</span></a>
-            <div class="dropdown-menu">
-              <a href="index.html#readee-process" class="dropdown-item">Reading Process</a>
-              <a href="standards.html" class="dropdown-item">Learning Standards</a>
-            </div>
-          </div>
-
-          <div class="nav-item">
-            <a href="nonprofit-literacy.html" class="nav-link">About</a>
-          </div>
-
-          <div class="nav-item">
-            <a href="index.html#get-started" class="nav-link">Success Stories</a>
-          </div>
-
-          <div class="nav-item">
-            <a href="questionnaire.html" class="nav-link-cta">Get Started</a>
-          </div>
-        </nav>
-
-        <!-- Mobile Menu Toggle -->
-        <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">
-          <span class="menu-text">Menu</span>
-          <span class="hamburger-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
+        <ul class="nav-links">
+          <li><a href="index.html#why-readee">Why Readee</a></li>
+          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="engaging-effective.html">Programs</a></li>
+          <li><a href="nonprofit-literacy.html">About</a></li>
+          <li><a href="login.html" class="nav-login">Log In</a></li>
+          <li><a href="questionnaire.html" class="nav-cta">Get Started</a></li>
+        </ul>
+        <button class="nav-toggle" onclick="toggleMobile()" aria-label="Open menu">
+          <span></span><span></span><span></span>
         </button>
       </div>
+    </nav>
 
-      <!-- Mobile Navigation -->
-      <nav id="navMenu" class="mobile-nav">
-        <a href="login.html" class="mobile-nav-link mobile-nav-login">
-          <span class="login-icon">🔐</span>
-          <span class="login-text">Login to App</span>
-          <span class="login-arrow">→</span>
-        </a>
-
-        <div class="mobile-nav-section">
-          <div class="mobile-nav-header">Programs</div>
-          <a href="index.html#why-readee" class="mobile-nav-link">Why Readee?</a>
-          <a href="index.html#how-it-works" class="mobile-nav-link">How It Works</a>
-          <a href="engaging-effective.html" class="mobile-nav-link">Engaging & Effective</a>
-        </div>
-
-        <div class="mobile-nav-section">
-          <div class="mobile-nav-header">For Educators</div>
-          <a href="supporting-classroom.html" class="mobile-nav-link">Classroom Support</a>
-          <a href="standards.html" class="mobile-nav-link">ELA Standards</a>
-          <a href="assessment.html" class="mobile-nav-link">Assessment Tools</a>
-        </div>
-
-        <div class="mobile-nav-section">
-          <div class="mobile-nav-header">Resources</div>
-          <a href="index.html#readee-process" class="mobile-nav-link">Reading Process</a>
-          <a href="standards.html" class="mobile-nav-link">Learning Standards</a>
-        </div>
-
-        <a href="nonprofit-literacy.html" class="mobile-nav-link">About</a>
-        <a href="index.html#get-started" class="mobile-nav-link">Success Stories</a>
-        <a href="questionnaire.html" class="mobile-nav-link mobile-nav-cta">Get Started</a>
-      </nav>
-    </header>
+    <!-- Mobile nav -->
+    <div class="nav-mobile" id="mobileNav">
+      <button class="close-btn" onclick="toggleMobile()" aria-label="Close menu">&times;</button>
+      <a href="index.html#why-readee" onclick="toggleMobile()">Why Readee</a>
+      <a href="index.html#how-it-works" onclick="toggleMobile()">How It Works</a>
+      <a href="engaging-effective.html">Programs</a>
+      <a href="nonprofit-literacy.html">About</a>
+      <a href="login.html">Log In</a>
+      <a href="questionnaire.html">Get Started →</a>
+    </div>
     <div id="hero">
       <h1>📚 Nonprofit Literacy Program</h1>
       <p>Working alongside schools and teachers to strengthen early reading</p>
@@ -278,5 +217,11 @@
     </footer>
 
     <script src="app.js"></script>
+    <script>
+      // Mobile nav toggle
+      function toggleMobile() {
+        document.getElementById("mobileNav").classList.toggle("open");
+      }
+    </script>
   </body>
 </html>

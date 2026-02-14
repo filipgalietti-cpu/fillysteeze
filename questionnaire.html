@@ -7,97 +7,36 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="header-container">
-        <a href="index.html" class="logo-link">
+    <!-- ════════════ NAVIGATION ════════════ -->
+    <nav class="nav" id="navbar">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
           <img src="assets/readee-logo.png" alt="READEE logo" class="header-logo" />
         </a>
-
-        <!-- Desktop Navigation -->
-        <nav class="desktop-nav">
-          <div class="nav-item dropdown">
-            <a href="#" class="nav-link">Programs <span class="dropdown-arrow">▾</span></a>
-            <div class="dropdown-menu">
-              <a href="index.html#why-readee" class="dropdown-item">Why Readee?</a>
-              <a href="index.html#how-it-works" class="dropdown-item">How It Works</a>
-              <a href="engaging-effective.html" class="dropdown-item">Engaging & Effective</a>
-            </div>
-          </div>
-
-          <div class="nav-item dropdown">
-            <a href="#" class="nav-link">For Educators <span class="dropdown-arrow">▾</span></a>
-            <div class="dropdown-menu">
-              <a href="supporting-classroom.html" class="dropdown-item">Classroom Support</a>
-              <a href="standards.html" class="dropdown-item">ELA Standards</a>
-              <a href="assessment.html" class="dropdown-item">Assessment Tools</a>
-            </div>
-          </div>
-
-          <div class="nav-item dropdown">
-            <a href="#" class="nav-link">Resources <span class="dropdown-arrow">▾</span></a>
-            <div class="dropdown-menu">
-              <a href="index.html#readee-process" class="dropdown-item">Reading Process</a>
-              <a href="standards.html" class="dropdown-item">Learning Standards</a>
-            </div>
-          </div>
-
-          <div class="nav-item">
-            <a href="nonprofit-literacy.html" class="nav-link">About</a>
-          </div>
-
-          <div class="nav-item">
-            <a href="index.html#get-started" class="nav-link">Success Stories</a>
-          </div>
-
-          <div class="nav-item">
-            <a href="questionnaire.html" class="nav-link-cta">Get Started</a>
-          </div>
-        </nav>
-
-        <!-- Mobile Menu Toggle -->
-        <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">
-          <span class="menu-text">Menu</span>
-          <span class="hamburger-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
+        <ul class="nav-links">
+          <li><a href="index.html#why-readee">Why Readee</a></li>
+          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="engaging-effective.html">Programs</a></li>
+          <li><a href="nonprofit-literacy.html">About</a></li>
+          <li><a href="login.html" class="nav-login">Log In</a></li>
+          <li><a href="questionnaire.html" class="nav-cta">Get Started</a></li>
+        </ul>
+        <button class="nav-toggle" onclick="toggleMobile()" aria-label="Open menu">
+          <span></span><span></span><span></span>
         </button>
       </div>
+    </nav>
 
-      <!-- Mobile Navigation -->
-      <nav id="navMenu" class="mobile-nav">
-        <a href="login.html" class="mobile-nav-link mobile-nav-login">
-          <span class="login-icon">🔐</span>
-          <span class="login-text">Login to App</span>
-          <span class="login-arrow">→</span>
-        </a>
-
-        <div class="mobile-nav-section">
-          <div class="mobile-nav-header">Programs</div>
-          <a href="index.html#why-readee" class="mobile-nav-link">Why Readee?</a>
-          <a href="index.html#how-it-works" class="mobile-nav-link">How It Works</a>
-          <a href="engaging-effective.html" class="mobile-nav-link">Engaging & Effective</a>
-        </div>
-
-        <div class="mobile-nav-section">
-          <div class="mobile-nav-header">For Educators</div>
-          <a href="supporting-classroom.html" class="mobile-nav-link">Classroom Support</a>
-          <a href="standards.html" class="mobile-nav-link">ELA Standards</a>
-          <a href="assessment.html" class="mobile-nav-link">Assessment Tools</a>
-        </div>
-
-        <div class="mobile-nav-section">
-          <div class="mobile-nav-header">Resources</div>
-          <a href="index.html#readee-process" class="mobile-nav-link">Reading Process</a>
-          <a href="standards.html" class="mobile-nav-link">Learning Standards</a>
-        </div>
-
-        <a href="nonprofit-literacy.html" class="mobile-nav-link">About</a>
-        <a href="index.html#get-started" class="mobile-nav-link">Success Stories</a>
-        <a href="questionnaire.html" class="mobile-nav-link mobile-nav-cta">Get Started</a>
-      </nav>
-    </header>
+    <!-- Mobile nav -->
+    <div class="nav-mobile" id="mobileNav">
+      <button class="close-btn" onclick="toggleMobile()" aria-label="Close menu">&times;</button>
+      <a href="index.html#why-readee" onclick="toggleMobile()">Why Readee</a>
+      <a href="index.html#how-it-works" onclick="toggleMobile()">How It Works</a>
+      <a href="engaging-effective.html">Programs</a>
+      <a href="nonprofit-literacy.html">About</a>
+      <a href="login.html">Log In</a>
+      <a href="questionnaire.html">Get Started →</a>
+    </div>
 
     <div id="questionnaire-hero">
       <h1>Join READEE - Trusted by Parents and Educators</h1>
@@ -154,6 +93,12 @@
           </div>
 
           <div class="form-group">
+            <label for="phone">Phone Number (optional)</label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" />
+            <span class="error-message"></span>
+          </div>
+
+          <div class="form-group">
             <label for="role">I am a... *</label>
             <select id="role" name="role" required>
               <option value="">-- Please select your role --</option>
@@ -164,7 +109,7 @@
           </div>
 
           <div class="form-group">
-            <label for="school">School or district name (optional)</label>
+            <label for="school">School or District Name (optional)</label>
             <input
               type="text"
               id="school"
@@ -178,26 +123,89 @@
             </datalist>
           </div>
 
-          <div class="form-group" id="students-group">
-            <label for="students">Number of students/children (optional)</label>
+          <div class="form-group" id="children-group">
+            <label for="children">Number of Children/Students *</label>
             <input
               type="number"
-              id="students"
-              name="students"
+              id="children"
+              name="children"
               min="1"
+              max="100"
               placeholder="Enter number"
-              disabled
+              required
             />
+            <span class="error-message"></span>
+          </div>
+
+          <div class="form-group" id="grades-group">
+            <label for="grades">Grade Level(s) *</label>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="grades[]" value="Pre-K" />
+                <span>Pre-K</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="grades[]" value="Kindergarten" />
+                <span>Kindergarten</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="grades[]" value="1st Grade" />
+                <span>1st Grade</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="grades[]" value="2nd Grade" />
+                <span>2nd Grade</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="grades[]" value="3rd Grade" />
+                <span>3rd Grade</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="grades[]" value="4th Grade" />
+                <span>4th Grade</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="grades[]" value="5th Grade" />
+                <span>5th Grade</span>
+              </label>
+            </div>
+            <span class="error-message"></span>
           </div>
 
           <div class="form-group">
-            <label for="goals">What are your literacy goals? (optional)</label>
+            <label for="reading-level">Current Reading Level (optional)</label>
+            <select id="reading-level" name="reading-level">
+              <option value="">-- Select if known --</option>
+              <option value="emergent">Emergent Reader (just starting)</option>
+              <option value="beginning">Beginning Reader (simple books)</option>
+              <option value="developing">Developing Reader (chapter books)</option>
+              <option value="fluent">Fluent Reader (reading independently)</option>
+              <option value="advanced">Advanced Reader (above grade level)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="goals">What are your literacy goals? *</label>
             <textarea
               id="goals"
               name="goals"
               rows="4"
               placeholder="Share what you hope to achieve with READEE..."
+              required
             ></textarea>
+            <span class="error-message"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="hear-about">How did you hear about READEE? (optional)</label>
+            <select id="hear-about" name="hear-about">
+              <option value="">-- Please select --</option>
+              <option value="school">School/Teacher Recommendation</option>
+              <option value="friend">Friend or Family</option>
+              <option value="search">Online Search</option>
+              <option value="social">Social Media</option>
+              <option value="other">Other</option>
+            </select>
           </div>
 
           <button type="submit" class="submit-button">Get Started</button>
@@ -281,5 +289,11 @@
     </footer>
 
     <script src="app.js"></script>
+    <script>
+      // Mobile nav toggle
+      function toggleMobile() {
+        document.getElementById("mobileNav").classList.toggle("open");
+      }
+    </script>
   </body>
 </html>
